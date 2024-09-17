@@ -1,0 +1,45 @@
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.loginUserInfo{
+    border: 1px solid #00B8A9;
+    padding: 5px;
+    width:95%;
+    margin-bottom:16px;
+}
+
+.loginBtns{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.loginSubmit {
+	background-color:#00B8A9;
+    margin-top: 16px;
+}
+.loginSubmit:hover {
+	filter: brightness(110%);
+}
+
+button:active {
+	position:relative;
+	top:2px;
+}
+
+.passwordForget{
+    background-color: #6d6d6d;
+    border:none;
+    font-size:10px;
+    width:100%;
+    margin-top: 32px;
+}
+
+.passwordForget:hover{
+    filter: brightness(120%);
+}

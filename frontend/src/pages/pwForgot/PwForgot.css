@@ -1,0 +1,48 @@
+.pwForgotContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.peForgotText{
+    margin: 0px 32px 32px 32px;
+}
+
+.pwForgotEmail{
+    /* background-color: #00B8A9; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.pwForgotEmail h2{
+    margin-right: 135px;
+}
+
+.pwForgotUserInfo{
+    border: 1px solid #00B8A9;
+    padding: 5px;
+    width:95%;
+    margin-bottom:16px;
+    max-width:220px;
+}
+
+.pwForgotBtns{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.pwForgotSubmit {
+	background-color:#00B8A9;
+    margin-top: 16px;
+    width: 100px;
+}
+.pwForgotSubmit:hover {
+	filter: brightness(110%);
+}
+
+button:active {
+	position:relative;
+	top:2px;
+}

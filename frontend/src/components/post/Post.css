@@ -1,0 +1,109 @@
+.postContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.postWrapper {
+    margin-top: 16px;
+}
+
+/* デスクトップ */
+.timelinePost {
+    box-shadow: 0px 5px 16px -10px #000000;
+    margin: 10px 16px;
+    width: 660px;
+    display: block;
+    background-color: white;
+    padding-bottom: 32px;
+}
+
+/* スマホ向け */
+@media screen and (max-width: 768px) {
+    .timelinePost {
+        width: 350px;
+    }
+}
+
+.postTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+}
+
+.postTime {
+    color: gray;
+    margin-right: auto;
+    padding-left: 16px;
+    margin-bottom: 16px;
+    font-size: 12px;
+}
+
+.userInfo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 40%;
+    position: absolute;
+    border: none;
+    margin: 16px 0;
+}
+
+.fa-trash-can {
+    color: rgba(128, 128, 128, 0.484);
+    margin-right: 16px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: 'all 0.3s ease';
+    border: none;
+    font-size: 14px;
+}
+
+.postText {
+    padding: 0px 16px;
+    padding-bottom: 32px;
+    max-width: 80%;
+    margin: 0 auto;
+    word-wrap: break-word;
+    line-height: 26px;
+    letter-spacing: 1px;
+}
+
+.ratingBtns {
+    display: flex;
+    justify-content: center;
+    /* gap: 10px; */
+}
+
+.ratingBtn{
+    min-width: 110px;
+    height: 44px;
+}
+
+.warui {
+    background-color: #F6416C;
+
+}
+
+.warukunai {
+    background-color: #00B8A9;
+    margin-right: 16px;
+
+}
+
+.warukunai:hover {
+    filter: brightness(110%);
+}
+
+.warui:hover {
+    filter: brightness(150%);
+}
+
+.shareContainer{
+    background-color: #00B8A9;
+    display: flex;
+    justify-content: right;
+}
+.xShare{
+    margin-right: 20px;
+}

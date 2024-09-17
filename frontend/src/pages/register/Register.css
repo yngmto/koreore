@@ -1,0 +1,86 @@
+.registerContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    font-size:20px;
+    text-align: center;
+    padding: 32px;
+}
+
+h2{
+    font-size: 14px;
+}
+
+label{
+    margin-right: 12px;
+}
+
+.regsterUserInfo{
+    border: 1px solid gray;
+    padding: 5px;
+    width:100%;
+    margin-bottom:16px;
+}
+
+.registerEmail{
+    border: none;
+    text-align: center;
+    outline: none;
+}
+
+.registerGender , .registerBirthday{
+    border:none;
+    text-align: center;
+}
+
+.registerBirthday{
+    display: flex;
+    justify-content: center;
+}
+
+.registerYear{
+    width:40px;
+    text-align: center;
+    margin-right: 8px;
+}
+.registerMonth, .registerDay{
+    width: 24px;
+    text-align: center;
+    margin: 0 8px;
+}
+
+.registerBtns{
+    display: flex;
+    justify-content: center;
+}
+
+.registerSubmit {
+	box-shadow: 0px 3px 10px -6px #000000;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+    transition: filter 0.2s ease;
+    display: block;
+    border:none;
+    width:100px;
+	background-color:#00B8A9;
+    margin-top: 16px;
+}
+
+
+.registerSubmit:hover {
+	filter: brightness(110%);
+}
+
+.registerSubmit:active {
+	position:relative;
+	top:2px;
+}

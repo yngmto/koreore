@@ -1,0 +1,53 @@
+.editContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editUserInfo{
+    border: 1px solid gray;
+    padding: 5px;
+    margin-bottom:16px;
+    margin-left: 20px;
+}
+
+.editGender , .editBirthday{
+    border:none;
+    text-align: center;
+}
+
+.editYear, .editMonth, .editDay{
+    width: 32px;
+    text-align: center;
+}
+
+.editBirthday input{
+    margin-left: 8px;
+}
+
+
+.editBtnsWrapper{
+    display: flex;
+    justify-content: space-around;
+}
+
+.editBtnsWrapper button{
+    width:100px;
+}
+
+.editSubmit{
+    margin-top: 16px;
+}
+.editBack{
+    margin-top: 16px;
+    background-color: #F6416C;
+}
+
+.editSubmit:hover {
+	filter: brightness(110%);
+}
+
+.editSubmit:active {
+	position:relative;
+	top:2px;
+}

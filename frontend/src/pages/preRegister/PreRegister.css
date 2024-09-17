@@ -1,0 +1,62 @@
+.preRegisterContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preRegisterWrapper{
+    margin: 0px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preEmail{
+    text-align: center;
+}
+
+.preRegsterUserInfo{
+    border: 1px solid #00B8A9;
+    padding: 5px;
+    width: 200px;
+    margin-bottom:16px;
+}
+
+.preRegisterMessage{
+    margin: 16px 0;
+    font-size: 16px;
+    width: 100%;
+}
+
+.registerBtns{
+    display: flex;
+    justify-content: center;
+}
+
+.registerSubmit {
+	box-shadow: 0px 3px 10px -6px #000000;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+    transition: filter 0.2s ease;
+    display: block;
+    border:none;
+    width:100px;
+	background-color:#00B8A9;
+    margin-top: 16px;
+}
+
+
+.registerSubmit:hover {
+	filter: brightness(110%);
+}
+
+.registerSubmit:active {
+	position:relative;
+	top:2px;
+}

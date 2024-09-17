@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-menu {
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    /* width: 100%; */
+    color: white;
+    box-shadow: 0px 4px 10px -3px #000000;
+
+
+}
+
+.footer-menu ul {
+    list-style-type: none;
+    margin: -5px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+}
+
+.footer-menu li {
+    flex: 1;
+    margin:10px 0px;
+
+}
+
+.footer-menu i {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    /* display: block; */
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* +処理 */
+.plus{
+    background: #00B8A9;
+    border-radius: 50px;
+    /* display: inline-block; */
+    min-width: 150px;
+    text-align: center;
+}
+.plus i {
+    color: white;
+}
+
+.postIcon{
+    margin-right:20px;
+}
+.profileIcon{
+    margin-left:20px;
+}
+
+/* ----改善の必要あり---- */
+.footer-menu li:hover {
+    filter: brightness(110%);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    .footer-menu ul {
+        flex-direction: row; /* 横並びを維持 */
+    }
+
+    .footer-menu  {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}

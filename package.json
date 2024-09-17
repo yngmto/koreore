@@ -1,0 +1,11 @@
+{
+  "name": "koreore",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd server && node index.js",
+    "build": "cd client && npm install && npm run build && cd ../server && npm install"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
