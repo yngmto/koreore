@@ -1,16 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node",
-      "config": { "buildCommand": "echo 'No build step required'" }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
-    }
-  ]
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build step required'"
+  }
 }
