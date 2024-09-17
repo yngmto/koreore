@@ -62,5 +62,5 @@
     "url": "^0.11.4",
     "util": "^0.12.4"
   },
-  "proxy": "http://localhost:5000/api"
+  "proxy": "https://koreorebackend.vercel.app/api"
 }
