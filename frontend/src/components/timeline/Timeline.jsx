@@ -14,10 +14,11 @@ export default function Timeline({ userId }) {
 
   //---TL読込---
   const fetchPosts = useCallback(async () => {
+    const API_URL = process.env.REACT_APP_API_URL;
     try {
       const endpoint = userId
-        ? `/posts/myposts/${userId}`
-        : "/posts/timeline/all";
+        ? `${API_URL}/posts/myposts/${userId}`
+        : `${API_URL}/posts/timeline/all`;
 
         // console.log("endpoint:",endpoint);
 

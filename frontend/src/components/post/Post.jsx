@@ -9,6 +9,7 @@ timeago.register('ja', ja);
 
 
 export default function Post({ post }) {
+  const API_URL = process.env.REACT_APP_API_URL;
 
   //ログインユーザー
   const { user: currentUser } = useContext(AuthContext);
@@ -18,7 +19,7 @@ export default function Post({ post }) {
   useEffect(() => {
     console.log("投稿ユーザーを取得します");
     const fetchUser = async () => {
-      const postUser = await axios.get(`/users/${post.userId}`);
+      const postUser = await axios.get(`${API_URL}/users/${post.userId}`);
       console.log("投稿ユーザーを取得できてる？", postUser.data);
       setUser(postUser.data);
 
@@ -63,7 +64,7 @@ export default function Post({ post }) {
       }
 
       //う～んのAPIを叩く useIdとpostIdを渡す
-      const response = await axios.put(`/posts/${post?._id}/warui`, { userId: currentUser?._id });
+      const response = await axios.put(`${API_URL}/posts/${post?._id}/warui`, { userId: currentUser?._id });
 
       // if (response.data.success) {
       setWarui(isWarui ? warui - 1 : warui + 1);
@@ -87,7 +88,7 @@ export default function Post({ post }) {
     }
 
     try {
-      const response = await axios.put(`/posts/${post?._id}/warukunai`, { userId: currentUser?._id });
+      const response = await axios.put(`${API_URL}/posts/${post?._id}/warukunai`, { userId: currentUser?._id });
       // if (response.data.success) {
       setWarukunai(isWarukunai ? warukunai - 1 : warukunai + 1);
       setIsWarukunai(!isWarukunai);
@@ -217,7 +218,7 @@ export default function Post({ post }) {
     e.preventDefault();
 
     try {
-      const response = await axios.delete(`/posts`, {
+      const response = await axios.delete(`${API_URL}/posts`, {
         params: {
           id: post?._id,
           userId: currentUser?._id
