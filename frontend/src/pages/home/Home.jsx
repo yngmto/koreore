@@ -5,6 +5,7 @@ import Timeline from '../../components/timeline/Timeline';
 
 export default function Home() {
   const API_URL = process.env.REACT_APP_API_URL;
+  console.log(API_URL);
 
   const testConnection = async () => {
     try {
