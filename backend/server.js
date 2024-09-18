@@ -29,20 +29,27 @@ app.use("/api/auth", authRoute);
 app.use("/api/posts", postsRoute);
 app.use("/api/pre", preRoute);
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('サーバーエラーが発生いたしました');
+});
+
 // クライアントのビルドフォルダを静的ファイルとして提供
-app.use(express.static(path.join(__dirname, '../client/build')));
+//app.use(express.static(path.join(__dirname, '../client/build')));
 
 // その他のルートはReactアプリにリダイレクト
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Vercelでのデプロイ時には不要？
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`Server is running`);
 });
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('サーバーエラーが発生いたしました');
-});
+//ローカル時
+//const PORT = process.env.PORT || 5000;
+//app.listen(PORT, () => {
+//  console.log(`Server is running on port ${PORT}`);
+//});
+
