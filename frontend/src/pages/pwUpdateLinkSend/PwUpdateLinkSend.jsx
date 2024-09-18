@@ -1,4 +1,3 @@
-import React, { useRef, } from 'react';
 import "./PwUpdateLinkSend";
 import Topbar from '../../components/topbar/Topbar';
 import Footer from '../../components/footer/Footer';
