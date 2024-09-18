@@ -37,10 +37,12 @@ app.use((err, req, res, next) => {
 // クライアントのビルドフォルダを静的ファイルとして提供
 //app.use(express.static(path.join(__dirname, '../client/build')));
 
+//※Vercelでは、静的ファイルは
+//.vercel/output/static ディレクトリに配置する必要がある。
 // その他のルートはReactアプリにリダイレクト
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
+//app.get('*', (req, res) => {
+//  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+//});
 
 // Vercelでのデプロイ時には不要？
 app.listen(process.env.PORT || 5000, () => {
