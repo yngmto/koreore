@@ -1,14 +1,14 @@
 {
-  "version": 2, //Vercelの設定ファイルのver
-  "builds": [ //プロジェクトのビルド方法
+  "version": 2,
+  "builds": [
     {
-      "src": "api/index.js", //ビルド対象のファイル
-      "use": "@vercel/node" //Nodeランタイムを使用してビルドするよう指示
+      "src": "api/index.js",
+      "use": "@vercel/node"
     }
   ],
   "rewrites": [
     {
-      "source": "/(.*)", //すべてのリクエストを/api/index.jsに転送するよう指示
+      "source": "/(.*)",
       "destination": "/api"
     }
   ]
