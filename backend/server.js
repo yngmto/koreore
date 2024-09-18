@@ -5,6 +5,7 @@ const authRoute = require("./routes/auth");
 const postsRoute = require("./routes/posts");
 const preRoute = require("./routes/pre");
 const mongoose = require("mongoose");
+const path = require('path');
 require("dotenv").config();
 
 //DB接続
