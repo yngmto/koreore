@@ -40,14 +40,14 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 //※Vercelでは、静的ファイルは
 //.vercel/output/static ディレクトリに配置する必要がある。
 // その他のルートはReactアプリにリダイレクト
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+// });
 
 // Vercelでのデプロイ時には不要？
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server is running`);
-});
+// app.listen(process.env.PORT || 5000, () => {
+//   console.log(`Server is running`);
+// });
 
 //ローカル時
 //const PORT = process.env.PORT || 5000;
