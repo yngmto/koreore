@@ -2,6 +2,7 @@ import React from 'react';
 import Topbar from '../../components/topbar/Topbar';
 import Footer from '../../components/footer/Footer';
 import Timeline from '../../components/timeline/Timeline';
+import axios from 'axios';
 
 export default function Home() {
   const API_URL = process.env.REACT_APP_API_URL;
