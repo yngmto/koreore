@@ -55,4 +55,8 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 //  console.log(`Server is running on port ${PORT}`);
 //});
 
+app.get('/', (req, res) => {
+  res.send('Welcome to my backend!');
+});
+
 module.exports = app;
