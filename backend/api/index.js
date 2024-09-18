@@ -60,4 +60,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to my backend!');
 });
 
+app.get('/api/test',(req,res)=>{
+  res.json({message:"バックエンドと接続成功"});
+});
+
 module.exports = app;
