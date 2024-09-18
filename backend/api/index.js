@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const usersRoute = require("./routes/users");
-const authRoute = require("./routes/auth");
-const postsRoute = require("./routes/posts");
-const preRoute = require("./routes/pre");
+const usersRoute = require("../routes/users");
+const authRoute = require("../routes/auth");
+const postsRoute = require("../routes/posts");
+const preRoute = require("../routes/pre");
 const mongoose = require("mongoose");
 const path = require('path');
 require("dotenv").config();

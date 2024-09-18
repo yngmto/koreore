@@ -2,14 +2,14 @@
   "version": 2, //Vercelの設定ファイルのver
   "builds": [ //プロジェクトのビルド方法
     {
-      "src": "server.js", //ビルド対象のファイル
+      "src": "api/index.js", //ビルド対象のファイル
       "use": "@vercel/node" //Nodeランタイムを使用してビルドするよう指示
     }
   ],
-  "routes": [ //リクエストの処理方法
+  "rewrites": [
     {
-      "src": "/(.*)", //すべてのリクエストパス
-      "dest": "server.js" //すべてのリクエストを転送する
+      "source": "/(.*)", //すべてのリクエストを/api/index.jsに転送するよう指示
+      "destination": "/api"
     }
   ]
 }
