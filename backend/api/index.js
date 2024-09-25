@@ -38,11 +38,11 @@ app.use(express.json());
 //   next();
 // });
 
-///"/api"を削除してみる
-app.use("/api/users", usersRoute);
-app.use("/api/auth", authRoute);
+///頭の"/api"を削除
+app.use("/users", usersRoute);
+app.use("/auth", authRoute);
 app.use("/posts", postsRoute);
-app.use("/api/pre", preRoute);
+app.use("/pre", preRoute);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
