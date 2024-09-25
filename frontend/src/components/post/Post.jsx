@@ -17,10 +17,10 @@ export default function Post({ post }) {
   const [user, setUser] = useState({});
   ///---投稿userを取得---
   useEffect(() => {
-    console.log("投稿ユーザーを取得します");
+    // console.log("投稿ユーザーを取得します");
     const fetchUser = async () => {
       const postUser = await axios.get(`${API_URL}/users/${post.userId}`);
-      console.log("投稿ユーザーを取得できてる？", postUser.data);
+      // console.log("投稿ユーザーを取得できてる？", postUser.data);
       setUser(postUser.data);
 
     }

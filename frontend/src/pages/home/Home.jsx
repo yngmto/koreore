@@ -6,7 +6,6 @@ import axios from 'axios';
 
 export default function Home() {
   const API_URL = process.env.REACT_APP_API_URL;
-  console.log("API_URL",API_URL);
 
   const testConnection = async () => {
     try {
