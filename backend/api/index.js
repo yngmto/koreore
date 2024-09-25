@@ -11,11 +11,12 @@ const cors = require("cors");
 
 //DB接続
 const MONGOURL = process.env.MONGOURL;
+console.log("MONGOURL",MONGOURL);
 mongoose
 .connect(MONGOURL)
 .then(() => {
   console.log("DB接続成功")})
-.catch((err)=>{console.log(err)});
+.catch((err)=>{console.log("errが発生しました",err)});
 
 //CORS
 app.use(cors({
