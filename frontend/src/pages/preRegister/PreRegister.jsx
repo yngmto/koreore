@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 export default function PreRegister() {
+    const API_URL = process.env.REACT_APP_API_URL;
     const email = useRef();
 
     //リダイレクトに使用
@@ -21,7 +22,7 @@ export default function PreRegister() {
             }
 
             //preRegisterAPIを叩く
-            const response = await axios.post("pre/preRegister", user);
+            const response = await axios.post(`${API_URL}/pre/preRegister`, user);
             console.log("preRegisterのresponse", response);
             // もし既に登録済ならリダイレクト
             if (response.data.success) {

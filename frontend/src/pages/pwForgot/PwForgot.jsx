@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function PwForgot() {
+    const API_URL = process.env.REACT_APP_API_URL;
     const email = useRef();
 
     //リダイレクトに使用
@@ -21,7 +22,7 @@ export default function PwForgot() {
         }
 
         //APIを叩く
-        const response = await axios.post("pre/pwForgot", user);
+        const response = await axios.post(`${API_URL}/pre/pwForgot`, user);
         console.log("pwForgotのresponse", response);
 
         if (response.data.success) {

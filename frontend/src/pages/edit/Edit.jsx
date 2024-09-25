@@ -4,7 +4,6 @@ import Topbar from '../../components/topbar/Topbar';
 import Footer from '../../components/footer/Footer';
 import { AuthContext } from '../../state/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
 import { updateCall } from '../../actionCalls';
 import { isValid, parse } from 'date-fns';
 

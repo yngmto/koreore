@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 export default function PwUpdate() {
+    const API_URL = process.env.REACT_APP_API_URL;
     const password = useRef();
     const passwordConfirmation = useRef();
 
@@ -36,12 +37,12 @@ export default function PwUpdate() {
                     password: password.current.value,
                 }
 
-                const updatedUser = await axios.put(`/users/pwUpdate${decodeUser._id}`,user);
+                const updatedUser = await axios.put(`${API_URL}/users/pwUpdate${decodeUser._id}`,user);
 
                 console.log("updatedUser",updatedUser);
 
                 //成功したらpreUserを削除する
-                await axios.delete("/pre/delete", {
+                await axios.delete(`${API_URL}/pre/delete`, {
                     data: { email: decodeUser.email }
                 });
 

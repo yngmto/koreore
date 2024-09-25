@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function NewPost() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { user } = useContext(AuthContext);
   const desc = useRef(null);
   const [inputNum, setInputNum] = useState(140);
@@ -40,7 +41,7 @@ export default function NewPost() {
     };
 
     try {
-      await axios.post("/posts", newPost);
+      await axios.post(`${API_URL}/posts`, newPost);
       navigate("/");
     } catch (err) {
       console.log(err);

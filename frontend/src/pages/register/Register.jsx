@@ -10,6 +10,7 @@ import { isValid, parse } from 'date-fns';
 
 
 export default function Register() {
+    const API_URL = process.env.REACT_APP_API_URL;
     const email = useRef();
     const year = useRef();
     const month = useRef();
@@ -93,12 +94,12 @@ export default function Register() {
                 }
 
                 //registerAPIを叩く
-                await axios.post("/auth/register", user);
+                await axios.post(`${API_URL}/auth/register`, user);
 
                 console.log("user:",user);
 
                 //成功したらpreUserを削除する
-                await axios.delete("/pre/delete", {
+                await axios.delete(`${API_URL}/pre/delete`, {
                     data:{email:user.email}
                 });
 

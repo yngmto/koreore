@@ -9,6 +9,7 @@ import Post from '../../components/post/Post';
 import axios from 'axios';
 
 export default function Profile() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { user, dispatch } = useContext(AuthContext);
 
   //日付
@@ -20,7 +21,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchMypost = async () => {
       try {
-        const response = await axios.get(`/posts/mypost/${user._id}`);
+        const response = await axios.get(`${API_URL}/posts/mypost/${user._id}`);
         setMypost(response.data);
       } catch (err) {
         console.log(err);
