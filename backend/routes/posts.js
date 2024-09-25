@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require("express").Router();
+const router = express.Router();
 const Post = require("../models/Post");
 
 //投稿を作成する

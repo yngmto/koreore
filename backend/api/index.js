@@ -7,6 +7,7 @@ const preRoute = require("../routes/pre");
 const mongoose = require("mongoose");
 const path = require('path');
 const cors = require("cors");
+
 //DB接続
 const MONGOURL = process.env.MONGOURL;
 console.log("MONGOURL",MONGOURL);
@@ -37,9 +38,10 @@ app.use(express.json());
 //   next();
 // });
 
+///"/api"を削除してみる
 app.use("/api/users", usersRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/posts", postsRoute);
+app.use("/posts", postsRoute);
 app.use("/api/pre", preRoute);
 
 app.use((err, req, res, next) => {
