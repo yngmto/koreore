@@ -19,8 +19,9 @@ export default function Timeline({ userId }) {
       const endpoint = userId
         ? `${API_URL}/posts/myposts/${userId}`
         : `${API_URL}/posts/timeline/all`;
-
-        // console.log("endpoint:",endpoint);
+        //useridが渡されているなら自分の投稿を
+        //そうでなければすべての投稿を取得
+        console.log("endpoint:",endpoint);
 
       const response = await axios.get(endpoint, {
         params: { lastTime: lastTime }

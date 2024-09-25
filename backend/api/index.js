@@ -16,11 +16,15 @@ mongoose
   console.log("DB接続成功")})
 .catch((err)=>{console.log(err)});
 
-//このURLからのリクエストのみを許可
+//CORS
 app.use(cors({
+  //このURLからのリクエストのみを許可
   origin: 'https://koreore.vercel.app',
+  //クッキーやHTTP認証などの認証情報を含むリクエストを許可
   credentials: true,
+  //許可するメソッド
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  //クライアントが送信できるヘッダー
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
