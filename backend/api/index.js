@@ -6,6 +6,7 @@ const postsRoute = require("../routes/posts");
 const preRoute = require("../routes/pre");
 const mongoose = require("mongoose");
 const path = require('path');
+const cors = require("cors");
 require("dotenv").config();
 
 //DB接続
@@ -14,6 +15,14 @@ mongoose
 .then(() => {
   console.log("DB接続成功")})
 .catch((err)=>{console.log(err)});
+
+//このURLからのリクエストのみを許可
+app.use(cors({
+  origin: 'https://koreore.vercel.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 //---ミドルウェア---
 app.use(express.json());
