@@ -200,6 +200,7 @@ router.put("/:id/warui", async (req, res) => {
 
 //タイムラインの投稿を取得する
 router.get("/timeline/all", async (req, res) => {
+    console.log("TLを取得します");
     const lastTime =
         req.query.lastTime ? new Date(req.query.lastTime) : null;
     // console.log("lastTime:", lastTime);

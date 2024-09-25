@@ -7,11 +7,11 @@ const preRoute = require("../routes/pre");
 const mongoose = require("mongoose");
 const path = require('path');
 const cors = require("cors");
-require("dotenv").config();
+// require("dotenv").config();
 
 //DB接続
 mongoose
-.connect(process.env.MONGOURL)
+.connect(MONGOURL)
 .then(() => {
   console.log("DB接続成功")})
 .catch((err)=>{console.log(err)});
