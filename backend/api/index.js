@@ -10,6 +10,7 @@ const cors = require("cors");
 // require("dotenv").config();
 
 //DB接続
+const MONGOURL = process.env.MONGOURL;
 mongoose
 .connect(MONGOURL)
 .then(() => {
