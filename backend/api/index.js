@@ -13,7 +13,12 @@ const cors = require("cors");
 const MONGOURL = process.env.MONGOURL;
 console.log("MONGOURL",MONGOURL);
 mongoose
-.connect(MONGOURL)
+.connect(MONGOURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+  })
 .then(() => {
   console.log("DB接続成功")})
 .catch((err)=>{console.log("errが発生しました",err)});
