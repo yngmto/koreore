@@ -7,18 +7,11 @@ const preRoute = require("../routes/pre");
 const mongoose = require("mongoose");
 const path = require('path');
 const cors = require("cors");
-// require("dotenv").config();
-
 //DB接続
 const MONGOURL = process.env.MONGOURL;
 console.log("MONGOURL",MONGOURL);
 mongoose
-.connect(MONGOURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000,
-  socketTimeoutMS: 45000,
-  })
+.connect(MONGOURL)
 .then(() => {
   console.log("DB接続成功")})
 .catch((err)=>{console.log("errが発生しました",err)});
