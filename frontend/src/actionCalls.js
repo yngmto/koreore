@@ -2,13 +2,13 @@ import axios from "axios";
 
 //ログインに関すること
 export const loginCall = async (user, dispatch) => {
-
+    const API_URL = process.env.REACT_APP_API_URL;
     console.log("---loginCallに到達---");
     //ログインを開始するよ～っていう通知
     dispatch({ type: "LOGIN_START" });
     try {
         //LOGIN_STARTが成功したら、ログインのAPIを叩く
-        const response = await axios.post("/auth/login", user);
+        const response = await axios.post(`${API_URL}/auth/login`, user);
 
         //成功した通知を出す
         dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
