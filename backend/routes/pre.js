@@ -15,7 +15,7 @@ router.post("/preRegister", async (req, res) => {
         if (registeredUser) {
             console.log("このユーザーは既に存在します");
             //リダイレクト準備
-            const frontendUrl = process.env.FRONTEND_URL;
+            const frontendUrl = "https://koreore.vercel.app";
             return res.json({
                 success: true,
                 redirectTo: `${frontendUrl}/registered/`
@@ -23,7 +23,7 @@ router.post("/preRegister", async (req, res) => {
         } else if (preRegisteredUser) {
             console.log("このユーザーは既に仮登録済みです")
             //リダイレクト準備
-            const frontendUrl = process.env.FRONTEND_URL;
+            const frontendUrl = "https://koreore.vercel.app";
             return res.json({
                 success: true,
                 redirectTo: `${frontendUrl}/preUserExist/`
@@ -54,7 +54,7 @@ router.post("/pwForgot", async (req, res) => {
         if (!registeredUser) {
             console.log("このメールアドレスは登録されていません");
             //リダイレクト準備
-            const frontendUrl = process.env.FRONTEND_URL;
+            const frontendUrl = "https://koreore.vercel.app";
             return res.json({
                 success: false
                 //リダイレクトさせる
@@ -62,7 +62,7 @@ router.post("/pwForgot", async (req, res) => {
         } else if (preRegisteredUser) {
             console.log("このユーザーには既にメールをお送りしています");
             //リダイレクト準備
-            const frontendUrl = process.env.FRONTEND_URL;
+            const frontendUrl = "https://koreore.vercel.app";
             return res.json({
                 success: false
                 //リダイレクトさせる
@@ -103,7 +103,7 @@ async function sendVerificationEmail(to, code) {
         html: `
       <p>仮登録いただきありがとうございます。</p>
       <p>以下のリンクをクリックして、本登録へお進みください。</p>
-      <a href="http://localhost:5000/api/pre/verify/${code}">新規登録</a>
+      <a href="https://koreore.vercel.app/pre/verify/${code}">新規登録</a>
     `
     }
     console.log(mailOptions);
@@ -123,7 +123,7 @@ async function sendPwUpdateEmail(to, code) {
         subject: "これおれがわるいんか？：パスワード更新",
         html: `
       <p>以下のリンクをクリックして、パスワード更新画面へお進みください。</p>
-      <a href="http://localhost:5000/api/pre/pwUpdate/${code}">パスワード更新</a>
+      <a href="https://koreore.vercel.app/pre/pwUpdate/${code}">パスワード更新</a>
     `
     }
     console.log(mailOptions);
@@ -153,7 +153,7 @@ router.get("/verify/:code", async (req, res) => {
             //userを安全な形式に変換
             const encodeUser = Buffer.from(JSON.stringify(user)).toString("base64");
             //リダイレクト準備
-            const frontendUrl = process.env.FRONTEND_URL;
+            const frontendUrl ="https://koreore.vercel.app";
             // console.log("encodeUser:",encodeUser);
             return res.redirect(`${frontendUrl}/register/?user=${encodeUser}`);
         } else {
@@ -183,7 +183,7 @@ router.get("/pwUpdate/:code", async (req, res) => {
             //userを安全な形式に変換
             const encodeUser = Buffer.from(JSON.stringify(user)).toString("base64");
             //リダイレクト準備
-            const frontendUrl = process.env.FRONTEND_URL;
+            const frontendUrl = "https://koreore.vercel.app";
             // console.log("encodeUser:",encodeUser);
             return res.redirect(`${frontendUrl}/pwUpdate/?user=${encodeUser}`);
         } else {
