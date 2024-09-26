@@ -18,8 +18,8 @@ router.put("/:id", async (req, res) => {
       const user = await User.findByIdAndUpdate(req.params.id, {
         $set: req.body,
       }, { new: true });
-      //ここで最新のuserを返す
-      return res.status(200).json({ message: "ユーザー情報の更新が完了しました", user: user });
+      //ここで最新のuserを返す(これがupdateCallのresponse~payloadとなる)
+      return res.status(200).json(user);
 
     } catch (err) {
       return res.status(500).json({

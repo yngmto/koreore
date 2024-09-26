@@ -20,7 +20,7 @@ export const loginCall = async (user, dispatch) => {
 export const updateCall = async (user, dispatch) => {
     const API_URL = process.env.REACT_APP_API_URL;
 
-    // console.log("actionCallsに到達しました");
+    console.log("updateCallに到達しました");
 
     try {
         //updateのAPIを叩く
