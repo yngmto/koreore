@@ -8,19 +8,21 @@ router.put("/:id", async (req, res) => {
   console.log("更新APIを開始");
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
-      //PWのハッシュ化
+      //PWがあるならハッシュ化
+      if(req.body.password){
       const salt = await bcrypt.genSalt(10);
       const hashedPw = await bcrypt.hash(req.body.password, salt);
       req.body.password = hashedPw;
+      }
 
       const user = await User.findByIdAndUpdate(req.params.id, {
         $set: req.body,
       }, { new: true });
       //ここで最新のuserを返す
-      return res.status(200).json(user);
+      return res.status(200).json("ユーザー情報の更新が完了しました",user);
 
     } catch (err) {
-      return res.status(500).json(err);
+      return res.status(500).json("更新APIでエラーが発生しました",err);
     }
   } else {
     return res.status(403).json("あなたは自分のアカウントのときだけ情報を更新できます");
