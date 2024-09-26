@@ -23,6 +23,7 @@ export default function PwUpdate() {
 
     //submitしたときに実行する内容
     const handleSubmit = async (e) => {
+        const API_URL = process.env.REACT_APP_API_URL;
         e.preventDefault();
         console.log("更新ボタン押下");
 
