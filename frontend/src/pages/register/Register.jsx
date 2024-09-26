@@ -51,11 +51,6 @@ export default function Register() {
         if (currentYear - yearNum > 130) {
             return '130歳以上の年齢は無効です';
         }
-
-        if (currentYear - yearNum < 18) {
-            return '18歳未満は登録できません';
-        }
-
         return null; // エラーがない場合はnullを返す
     };
 
