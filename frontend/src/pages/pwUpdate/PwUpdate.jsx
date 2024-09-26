@@ -25,7 +25,7 @@ export default function PwUpdate() {
     const handleSubmit = async (e) => {
         const API_URL = process.env.REACT_APP_API_URL;
         e.preventDefault();
-        console.log("更新ボタン押下");
+        console.log("PW更新ボタン押下");
 
         //PWと確認用PWが合っているか確認
         if (password.current.value !== passwordConfirmation.current.value) {
@@ -38,7 +38,7 @@ export default function PwUpdate() {
                     password: password.current.value,
                 }
 
-                const updatedUser = await axios.put(`${API_URL}/users/pwUpdate${decodeUser._id}`,user);
+                const updatedUser = await axios.put(`${API_URL}/users/pwUpdate/${decodeUser._id}`,user);
 
                 console.log("updatedUser",updatedUser);
 
