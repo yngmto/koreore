@@ -41,7 +41,8 @@ router.put("/pwUpdate/:id", async (req, res) => {
   console.log("paramsid", req.params.id);
   console.log("req.body", req.body);
   try {
-    const existUser = await User.findById(req.params.id);
+    // const existUser = await User.findById(req.params.id);
+    const existUser = await User.findById("66f4e62a120e71bb7d9b9447");
     console.log("existUser",existUser);
 
     if (!existUser) {
