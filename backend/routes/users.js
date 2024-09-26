@@ -68,9 +68,9 @@ router.put("/pwUpdate/:id", async (req, res) => {
 //ユーザー情報の削除
 router.delete("/:id", async (req, res) => {
   console.log("deleteAPIに到達しました");
-  // console.log(req.body.userId);
-  // console.log(req.params.id );
-  // console.log(req.body.userId === req.params.id);
+  console.log(req.body.userId);
+  console.log(req.params.id );
+  console.log(req.body.userId === req.params.id);
 
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
@@ -81,7 +81,7 @@ router.delete("/:id", async (req, res) => {
       return res.status(500).json(err);
     }
   } else {
-    return res.status(403).json("あなたは自分のアカウントのときだけ情報を削除できます")
+    return res.status(403).json({message:"あなたは自分のアカウントのときだけ情報を削除できます"});
   }
 });
 
