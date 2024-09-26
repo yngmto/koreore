@@ -12,18 +12,16 @@ router.post("/preRegister", async (req, res) => {
         const registeredUser = await User.findOne({ email: req.body.email });
         const preRegisteredUser = await PreUser.findOne({ email: req.body.email });
         // console.log("registeredUser:",registeredUser);
+        const frontendUrl = "https://koreore.vercel.app";
         if (registeredUser) {
             console.log("このユーザーは既に存在します");
             //リダイレクト準備
-            const frontendUrl = "https://koreore.vercel.app";
             return res.json({
                 success: true,
                 redirectTo: `${frontendUrl}/registered/`
             });
         } else if (preRegisteredUser) {
             console.log("このユーザーは既に仮登録済みです")
-            //リダイレクト準備
-            const frontendUrl = "https://koreore.vercel.app";
             return res.json({
                 success: true,
                 redirectTo: `${frontendUrl}/preUserExist/`
@@ -96,7 +94,7 @@ const transporter = nodemailer.createTransport({
 //メール送信関数
 async function sendVerificationEmail(to, code) {
     const API_URL = process.env.REACT_APP_API_URL;
-    console.log("メール送信関数に到達しました");
+    console.log("メール送信関数に到達しました API_URL = ",API_URL);
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: to,
@@ -107,7 +105,7 @@ async function sendVerificationEmail(to, code) {
       <a href="${API_URL}/pre/verify/${code}">新規登録</a>
     `
     }
-    console.log(mailOptions);
+    // console.log(mailOptions);
 
     try {
         await transporter.sendMail(mailOptions);
