@@ -95,6 +95,7 @@ const transporter = nodemailer.createTransport({
 
 //メール送信関数
 async function sendVerificationEmail(to, code) {
+    const API_URL = process.env.REACT_APP_API_URL;
     console.log("メール送信関数に到達しました");
     const mailOptions = {
         from: process.env.EMAIL_USER,
@@ -103,7 +104,7 @@ async function sendVerificationEmail(to, code) {
         html: `
       <p>仮登録いただきありがとうございます。</p>
       <p>以下のリンクをクリックして、本登録へお進みください。</p>
-      <a href="https://koreore.vercel.app/pre/verify/${code}">新規登録</a>
+      <a href="${API_URL}/pre/verify/${code}">新規登録</a>
     `
     }
     console.log(mailOptions);
@@ -116,6 +117,7 @@ async function sendVerificationEmail(to, code) {
     }
 }
 async function sendPwUpdateEmail(to, code) {
+    const API_URL = process.env.REACT_APP_API_URL;
     console.log("PwUpdateメール送信関数に到達しました");
     const mailOptions = {
         from: process.env.EMAIL_USER,
@@ -123,7 +125,7 @@ async function sendPwUpdateEmail(to, code) {
         subject: "これおれがわるいんか？：パスワード更新",
         html: `
       <p>以下のリンクをクリックして、パスワード更新画面へお進みください。</p>
-      <a href="https://koreore.vercel.app/pre/pwUpdate/${code}">パスワード更新</a>
+      <a href="${API_URL}/pre/pwUpdate/${code}">パスワード更新</a>
     `
     }
     console.log(mailOptions);
