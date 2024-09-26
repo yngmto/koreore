@@ -58,6 +58,8 @@ router.put("/pwUpdate/:id", async (req, res) => {
       { new: true })
       .select("-password"); //パスワードを除外して返す
 
+      console.log("updatedUser",updatedUser);
+
     return res.status(200).json(updatedUser);
 
   } catch (err) {
