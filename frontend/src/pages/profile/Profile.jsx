@@ -127,13 +127,17 @@ export default function Profile() {
       </Link>
 
       <div className="profileMypostsWrapper">
-        <h1>ポスト</h1>
+        <h1>マイポスト</h1>
         <ErrorBoundary>
-          {mypost ? <Post post={mypost} /> : <p>まだ投稿がありません</p>}
+
+          {mypost ? <><Post post={mypost} />
+            <Link to="/myposts">
+              <button className='profileMypostsMore btn'>もっと見る</button>
+            </Link></>
+            : <p className='noPost'>まだ投稿がありません</p>}
+
         </ErrorBoundary>
-        <Link to="/myposts">
-          <button className='profileMypostsMore btn'>もっと見る</button>
-        </Link>
+
       </div>
 
       <div className="profileBtns">

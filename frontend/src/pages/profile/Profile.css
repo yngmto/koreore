@@ -15,7 +15,7 @@
 	border: none;
 }
 
-.profileMypostsWrapper{
+.profileMypostsWrapper {
 	background-color: #00b8a91c;
 	margin-top: 32px;
 	padding-bottom: 32px;
@@ -25,7 +25,7 @@
 	align-items: center;
 }
 
-.profileMypostsWrapper h1{
+.profileMypostsWrapper h1 {
 	margin-bottom: -36px;
 }
 
@@ -130,4 +130,9 @@ button:active {
 .deleteCloseBtn {
 	background-color: #F6416C;
 	margin-right: 16px;
+}
+
+.noPost {
+	margin-top: 32px;
+	margin-bottom: 16px;
 }
