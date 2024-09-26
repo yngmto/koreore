@@ -183,7 +183,7 @@ router.get("/pwUpdate/:code", async (req, res) => {
             //userを安全な形式に変換
             const encodeUser = Buffer.from(JSON.stringify(user)).toString("base64");
             //リダイレクト準備
-            const frontendUrl = "https://koreore.vercel.app";
+            const frontendUrl = process.env.REACT_APP_API_URL;
             // console.log("encodeUser:",encodeUser);
             return res.redirect(`${frontendUrl}/pwUpdate/?user=${encodeUser}`);
         } else {

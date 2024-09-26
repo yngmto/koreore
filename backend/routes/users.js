@@ -42,6 +42,8 @@ router.put("/pwUpdate/:id", async (req, res) => {
   console.log("req.body", req.body);
   try {
     const existUser = await User.findById(req.params.id);
+    console.log("existUser",existUser);
+
     if (!existUser) {
       return res.status(404).json({ message: "ユーザーが見つかりません" });
     }
@@ -50,6 +52,7 @@ router.put("/pwUpdate/:id", async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPw = await bcrypt.hash(req.body.password, salt);
     req.body.password = hashedPw;
+    console.log("req.body.password",req.body.password);
 
     //更新
     const updatedUser = await User.findByIdAndUpdate(
