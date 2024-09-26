@@ -49,7 +49,7 @@ export const deleteCall = async (user, dispatch) => {
     // console.log("deleteCallに到達しました");
 
     //deleteのAPIを叩く
-    await axios.delete(`${API_URL}users/${user.userId}`,{
+    await axios.delete(`${API_URL}/users/${user.userId}`,{
         data: user
     });
     try {
