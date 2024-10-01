@@ -8,9 +8,10 @@ const mongoose = require("mongoose");
 const path = require('path');
 const cors = require("cors");
 
+
 //DB接続
 const MONGOURL = process.env.MONGOURL;
-console.log("MONGOURL",MONGOURL);
+// console.log("MONGOURL",MONGOURL);
 mongoose
 .connect(MONGOURL)
 .then(() => {
@@ -20,7 +21,7 @@ mongoose
 //CORS
 app.use(cors({
   //このURLからのリクエストのみを許可
-  origin: 'https://koreore.vercel.app',
+  origin: ['https://koreore.vercel.app','http://localhost:3000'],
   //クッキーやHTTP認証などの認証情報を含むリクエストを許可
   credentials: true,
   //許可するメソッド
@@ -59,24 +60,19 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 //   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 // });
 
-// Vercelでのデプロイ時には不要？
-// app.listen(process.env.PORT || 5000, () => {
-//   console.log(`Server is running`);
-// });
-
 //ローカル時
-//const PORT = process.env.PORT || 5000;
-//app.listen(PORT, () => {
-//  console.log(`Server is running on port ${PORT}`);
-//});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+ console.log(`Server is running on port ${PORT}`);
+});
 
 //ルートパスのハンドラー
 app.get('/', (req, res) => {
   res.send('Welcome to my backend!');
 });
 
-app.get('/api/test',(req,res)=>{
-  res.json({message:"バックエンドと接続成功"});
-});
+// app.get('/api/test',(req,res)=>{
+//   res.json({message:"バックエンドと接続成功"});
+// });
 
 module.exports = app;
