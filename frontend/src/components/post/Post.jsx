@@ -49,7 +49,7 @@ export default function Post({ post }) {
     e.preventDefault();
     //ログイン済みなら無視
     if (currentUser) { return };
-    console.log("nulluserModalHandleが発火");
+    // console.log("nulluserModalHandleが発火");
     setNulluserModal(!nulluserModal);
   }
 
@@ -59,7 +59,7 @@ export default function Post({ post }) {
   const handleWarui = async () => {
     try {
       if (!currentUser) {
-        console.log("ログインしてください");
+        // console.log("ログインしてください");
         return;
       }
 
@@ -69,21 +69,21 @@ export default function Post({ post }) {
       // if (response.data.success) {
       setWarui(isWarui ? warui - 1 : warui + 1);
       setIsWarui(!isWarui);
-      console.log("isWarui:", !isWarui);
+      // console.log("isWarui:", !isWarui);
       if (!graphOn) { //初めての押下のときにtrueにする
         setGraphOn(true);
-        console.log("初めての評価です");
+        // console.log("初めての評価です");
       }
       // }
     } catch (err) {
-      console.log("う～んボタンでerrが発生", err)
+      // console.log("う～んボタンでerrが発生", err)
     }
   }
 
   //---「わるくない」押下---
   const handleWarukunai = async () => {
     if (!currentUser) {
-      console.log("ログインしてください");
+      // console.log("ログインしてください");
       return;
     }
 
@@ -94,11 +94,11 @@ export default function Post({ post }) {
       setIsWarukunai(!isWarukunai);
       if (!graphOn) { //初めての押下のときにtrueにする
         setGraphOn(true);
-        console.log("graphOn : ", graphOn);
+        // console.log("graphOn : ", graphOn);
       }
       // }
     } catch (err) {
-      console.log("わるくないボタンでerrが発生", err);
+      // console.log("わるくないボタンでerrが発生", err);
     }
 
 
@@ -209,7 +209,7 @@ export default function Post({ post }) {
   //削除モーダルのhandle
   const modalHandle = (e) => {
     e.preventDefault();  // フォームのデフォルトの送信動作を防ぐ
-    console.log("modalHandleが発火");
+    // console.log("modalHandleが発火");
     setModal(!modal);
   }
 

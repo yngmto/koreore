@@ -23,10 +23,10 @@ export default function PreRegister() {
 
             //preRegisterAPIを叩く
             const response = await axios.post(`${API_URL}/pre/preRegister`, user);
-            console.log("preRegisterのresponse", response);
+            // console.log("preRegisterのresponse", response);
             // もし既に登録済ならリダイレクト
             if (response.data.success) {
-                console.log("既に登録済みのようです");
+                // console.log("既に登録済みのようです");
                 window.location.href = response.data.redirectTo;
             } else {
                 //成功したらリダイレクト
