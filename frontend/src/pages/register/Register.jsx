@@ -91,7 +91,7 @@ export default function Register() {
                 //registerAPIを叩く
                 await axios.post(`${API_URL}/auth/register`, user);
 
-                console.log("user:",user);
+                //console.log("user:",user);
 
                 //成功したらpreUserを削除する
                 await axios.delete(`${API_URL}/pre/delete`, {

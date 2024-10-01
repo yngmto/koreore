@@ -20,7 +20,7 @@ const AuthReducer = (state, action) => {
                 error: action.payload,
             };
         case "UPDATE_USER":
-            console.log("UPDATE_USERに到達しました");
+            // console.log("UPDATE_USERに到達しました");
             return {
                 user: action.payload,
                 isFetching: false,
@@ -34,7 +34,7 @@ const AuthReducer = (state, action) => {
                 error: false,
             };
         case "DELETE_USER":
-            console.log("DELETE_USERに到達しました");
+            // console.log("DELETE_USERに到達しました");
             return {
                 user: null,
                 isFetching: false,

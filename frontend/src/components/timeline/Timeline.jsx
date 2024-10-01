@@ -43,7 +43,7 @@ export default function Timeline({ userId }) {
   //hasMoreの監視
   useEffect(() => {
     if (!hasMore) {
-      console.log("もうないです", hasMore);
+      //console.log("もうないです", hasMore);
     }
   }, [hasMore]);
 

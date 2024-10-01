@@ -3,7 +3,7 @@ import axios from "axios";
 //ログインに関すること
 export const loginCall = async (user, dispatch) => {
     const API_URL = process.env.REACT_APP_API_URL;
-    console.log("---loginCallに到達---");
+    // console.log("---loginCallに到達---");
     //ログインを開始するよ～っていう通知
     dispatch({ type: "LOGIN_START" });
     try {
@@ -20,7 +20,7 @@ export const loginCall = async (user, dispatch) => {
 export const updateCall = async (user, dispatch) => {
     const API_URL = process.env.REACT_APP_API_URL;
 
-    console.log("updateCallに到達しました");
+    // console.log("updateCallに到達しました");
 
     try {
         //updateのAPIを叩く
@@ -34,7 +34,7 @@ export const updateCall = async (user, dispatch) => {
 
 //ログアウト
 export const logoutCall = async (user, dispatch) => {
-    console.log("logoutCallに到達しました");
+    // console.log("logoutCallに到達しました");
 
     try {
         dispatch({ type: "LOGOUT_USER", payload: user });

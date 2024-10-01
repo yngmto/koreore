@@ -32,7 +32,7 @@ export default function NewPost() {
   }, []);
 
   const handleSubmit = async (e) => {
-    console.log("ポストのhandleが発火");
+    // console.log("ポストのhandleが発火");
     e.preventDefault();
 
     const newPost = {

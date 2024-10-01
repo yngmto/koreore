@@ -23,10 +23,10 @@ export default function PwForgot() {
 
         //APIを叩く
         const response = await axios.post(`${API_URL}/pre/pwForgot`, user);
-        console.log("pwForgotのresponse", response);
+        // console.log("pwForgotのresponse", response);
 
         if (response.data.success) {
-            console.log("既に登録済みのようです");
+            // console.log("既に登録済みのようです");
             window.location.href = response.data.redirectTo;
         } else {
             //成功したらリダイレクト

@@ -36,14 +36,14 @@ export default function Profile() {
   //モーダルのhandle
   const modalHandle = (e) => {
     e.preventDefault();  // フォームのデフォルトの送信動作を防ぐ
-    console.log("modalHandleが発火");
+    //console.log("modalHandleが発火");
     setModal(!modal);
   }
 
   //ログアウトのhandle
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("ログアウトが発火");
+    //console.log("ログアウトが発火");
 
     logoutCall(null, dispatch);
 

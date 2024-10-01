@@ -8,7 +8,7 @@ import "./Myposts.css";
 export default function Myposts() {
   const {user} = useContext(AuthContext);
   const userId = user._id;
-  console.log("userId:",userId)
+  // console.log("userId:",userId)
   return (
     <>
         <Topbar/>

@@ -66,7 +66,7 @@ export default function Edit() {
         if (password.current.value !== passwordConfirmation.current.value) {
             //setCustomValidity() ←あっているか自動で検出する関数
             passwordConfirmation.current.setCustomValidity("パスワードが違います");
-            console.log("パスワードクリア")
+            // console.log("パスワードクリア")
         } else {
             try {
                 //日付をDate型にする
