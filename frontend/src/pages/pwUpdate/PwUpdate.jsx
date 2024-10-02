@@ -39,7 +39,6 @@ export default function PwUpdate() {
                 }
 
                 const updatedUser = await axios.put(`${API_URL}/users/pwUpdate/${decodeUser._id}`,user);
-
                 // console.log("updatedUser",updatedUser);
 
                 //成功したらpreUserを削除する

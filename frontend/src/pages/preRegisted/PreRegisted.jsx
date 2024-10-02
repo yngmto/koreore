@@ -1,4 +1,3 @@
-import React, { useRef, } from 'react';
 import "./PreRegisted.css";
 import Topbar from '../../components/topbar/Topbar';
 import Footer from '../../components/footer/Footer';

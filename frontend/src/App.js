@@ -16,6 +16,9 @@ import { useContext } from "react";
 import { AuthContext } from "./state/AuthContext";
 import NewPost from "./pages/newPost/NewPost";
 import Edit from "./pages/edit/Edit";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -41,6 +44,7 @@ function App() {
           <Route path="/edit" element={user ? <Edit /> : <Navigate to="/" /> } />
         </Routes>
       </Router>
+      <ToastContainer position="top-right" autoClose={5000} />
     </>
   );
 }

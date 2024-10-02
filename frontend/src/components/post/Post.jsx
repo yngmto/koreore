@@ -193,7 +193,7 @@ export default function Post({ post }) {
   }, [isWarui]);
 
   //userの年齢計算
-  let age = 0;
+  let age = "読み込み中…";
   if (user && user.birthday) {
     const today = new Date();
     const birthDate = new Date(user.birthday)
@@ -224,6 +224,8 @@ export default function Post({ post }) {
           userId: currentUser?._id
         }
       });
+
+      // console.log("削除：",response);
 
       //成功したら元のページにリダイレクト
       window.location.reload();
@@ -308,12 +310,6 @@ export default function Post({ post }) {
                 >{graphOn ? <p>{warui}</p> : <p>{"う～ん"}</p>}</button>
               </form>
             </div>
-            {/* <div className="shareContainer">
-              <a href="https://twitter.com/intent/tweet?text=シェアしたいテキスト&url=ページのURL"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="share-button twitter">Xでシェア</a>
-            </div> */}
           </div>
         </div>
       </div>
