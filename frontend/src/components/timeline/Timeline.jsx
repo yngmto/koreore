@@ -69,7 +69,6 @@ export default function Timeline({ userId }) {
   useEffect(() => {
     setMessage(hasMore
       ? <div className="tlStop">読み込み中です…</div>
-      // <div className="fa-solid fa-angles-down tlUpdate"></div>
       : <div className="tlStop">読み込める投稿がありません</div>
     );
   }, [hasMore]);
