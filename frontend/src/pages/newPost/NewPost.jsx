@@ -5,6 +5,7 @@ import Footer from '../../components/footer/Footer';
 import { AuthContext } from '../../state/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 export default function NewPost() {
@@ -42,6 +43,19 @@ export default function NewPost() {
 
     try {
       await axios.post(`${API_URL}/posts`, newPost);
+      toast.success('投稿完了', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        style: {
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            border: '1px solid #00B8A9',
+        }
+    });
       navigate("/");
     } catch (err) {
       console.log(err);

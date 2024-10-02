@@ -5,6 +5,7 @@ import { format } from "timeago.js";
 import * as timeago from 'timeago.js';
 import ja from 'timeago.js/lib/lang/ja';
 import { AuthContext } from '../../state/AuthContext';
+import { response } from 'express';
 timeago.register('ja', ja);
 
 
@@ -225,6 +226,8 @@ export default function Post({ post }) {
         }
       });
 
+      // console.log("削除：",response);
+
       //成功したら元のページにリダイレクト
       window.location.reload();
 
@@ -308,12 +311,6 @@ export default function Post({ post }) {
                 >{graphOn ? <p>{warui}</p> : <p>{"う～ん"}</p>}</button>
               </form>
             </div>
-            {/* <div className="shareContainer">
-              <a href="https://twitter.com/intent/tweet?text=シェアしたいテキスト&url=ページのURL"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="share-button twitter">Xでシェア</a>
-            </div> */}
           </div>
         </div>
       </div>
