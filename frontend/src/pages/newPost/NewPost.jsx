@@ -36,6 +36,23 @@ export default function NewPost() {
     // console.log("ポストのhandleが発火");
     e.preventDefault();
 
+    if (desc.current.value.length <= 10) {
+      toast.error('10文字以上入力してください', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        style: {
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          border: '1px solid #F6416C',
+        }
+      })
+      return;
+    };
+
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
@@ -52,11 +69,12 @@ export default function NewPost() {
         draggable: true,
         progress: undefined,
         style: {
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            border: '1px solid #00B8A9',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          border: '1px solid #00B8A9',
         }
-    });
+      });
       navigate("/");
+
     } catch (err) {
       console.log(err);
     }

@@ -1,7 +1,7 @@
 {
   "name": "koreore",
   "version": "1.0.0",
-  "description": "ポートフォリオ用SNS",
+  "description": "これおれがわるいんか？",
   "main": "api/index.js",
   "scripts": {
     "start": "node api/index.js",

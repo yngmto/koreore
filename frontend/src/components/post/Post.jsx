@@ -5,6 +5,7 @@ import { format } from "timeago.js";
 import * as timeago from 'timeago.js';
 import ja from 'timeago.js/lib/lang/ja';
 import { AuthContext } from '../../state/AuthContext';
+import { toast } from 'react-toastify';
 timeago.register('ja', ja);
 
 
@@ -193,7 +194,7 @@ export default function Post({ post }) {
   }, [isWarui]);
 
   //userの年齢計算
-  let age = "読み込み中…";
+  let age = "…";
   if (user && user.birthday) {
     const today = new Date();
     const birthDate = new Date(user.birthday)
@@ -227,7 +228,8 @@ export default function Post({ post }) {
 
       // console.log("削除：",response);
 
-      //成功したら元のページにリダイレクト
+
+      //元のページにリダイレクト
       window.location.reload();
 
     } catch (err) {
