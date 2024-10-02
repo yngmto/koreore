@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react"
 import "./Profile.css";
-import Footer from '../../components/footer/Footer';
-import Topbar from '../../components/topbar/Topbar';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../state/AuthContext';
-import { deleteCall, logoutCall } from '../../actionCalls';
-import Post from '../../components/post/Post';
-import axios from 'axios';
+import Footer from "../../components/footer/Footer";
+import Topbar from "../../components/topbar/Topbar";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../state/AuthContext";
+import { deleteCall, logoutCall } from "../../actionCalls";
+import Post from "../../components/post/Post";
+import axios from "axios";
 
 export default function Profile() {
   const API_URL = process.env.REACT_APP_API_URL;
@@ -87,7 +87,7 @@ export default function Profile() {
   }
 
   return (<><Topbar />
-    <div className='profileContainer'>
+    <div className="profileContainer">
       <div className="profileWrapper">
 
         {/* モーダル */}
@@ -123,7 +123,7 @@ export default function Profile() {
         <div className="profileUserInfo profilePw">●●●●●●</div>
       </div>
       <Link to="/edit">
-        <button className='profileEdit btn'>編集</button>
+        <button className="profileEdit btn">編集</button>
       </Link>
 
       <div className="profileMypostsWrapper">
@@ -132,9 +132,9 @@ export default function Profile() {
 
           {mypost ? <><Post post={mypost} />
             <Link to="/myposts">
-              <button className='profileMypostsMore btn'>もっと見る</button>
+              <button className="profileMypostsMore btn">もっと見る</button>
             </Link></>
-            : <p className='noPost'>まだ投稿がありません</p>}
+            : <p className="noPost">まだ投稿がありません</p>}
 
         </ErrorBoundary>
 
@@ -142,11 +142,11 @@ export default function Profile() {
 
       <div className="profileBtns">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <button className='profileLogout btn' type='submit'>ログアウト</button>
+          <button className="profileLogout btn" type="submit">ログアウト</button>
         </form>
-        {/* <button className='profileContactBtn btn'>お問い合わせ</button> */}
+        {/* <button className="profileContactBtn btn">お問い合わせ</button> */}
         <form onSubmit={(e) => modalHandle(e)}>
-          <button className='profileDelete btn'>退会</button>
+          <button className="profileDelete btn">退会</button>
         </form>
       </div>
     </div>

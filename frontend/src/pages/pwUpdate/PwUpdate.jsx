@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import "./PwUpdate.css";
-import Topbar from '../../components/topbar/Topbar';
-import Footer from '../../components/footer/Footer';
+import Topbar from "../../components/topbar/Topbar";
+import Footer from "../../components/footer/Footer";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function PwUpdate() {
     const API_URL = process.env.REACT_APP_API_URL;
@@ -56,7 +56,7 @@ export default function PwUpdate() {
 
     return (<>
         <Topbar />
-        <div className='registerContainer'>
+        <div className="registerContainer">
 
             <form className="registerWrapper"
                 onSubmit={(e) => handleSubmit(e)}>
@@ -64,7 +64,7 @@ export default function PwUpdate() {
                 <h2>新規パスワード</h2>
                 <input
                     className="regsterUserInfo"
-                    type='password'
+                    type="password"
                     required
                     minLength="6"
                     ref={password}
@@ -72,13 +72,13 @@ export default function PwUpdate() {
                 <h2>新規パスワード(確認)</h2>
                 <input
                     className="regsterUserInfo"
-                    type='password'
+                    type="password"
                     required
                     minLength="6"
                     ref={passwordConfirmation}
                 />
                 <div className="registerBtns">
-                    <button className='registerSubmit btn' type="submit">更新</button>
+                    <button className="registerSubmit btn" type="submit">更新</button>
                 </div>
             </form>
         </div>

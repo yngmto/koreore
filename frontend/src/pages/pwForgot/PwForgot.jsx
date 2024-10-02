@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import "./PwForgot.css";
-import Footer from '../../components/footer/Footer';
-import Topbar from '../../components/topbar/Topbar';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import Footer from "../../components/footer/Footer";
+import Topbar from "../../components/topbar/Topbar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function PwForgot() {
     const API_URL = process.env.REACT_APP_API_URL;
@@ -39,7 +39,7 @@ export default function PwForgot() {
         <>
             <Topbar />
             <div className="pwForgotContainer">
-                <form className='pwForgotWrapper'
+                <form className="pwForgotWrapper"
                     onSubmit={(e) => handleSubmit(e)} >
                     <h1>パスワード更新</h1>
                     <div className="peForgotText">
@@ -49,14 +49,14 @@ export default function PwForgot() {
                         <h2>メールアドレス</h2>
                         <input
                             className="pwForgotUserInfo"
-                            type='email'
+                            type="email"
                             required
                             ref={email}
                         />
                     </div>
 
                     <div className="pwForgotBtns">
-                        <button className='pwForgotSubmit btn'>送信</button>
+                        <button className="pwForgotSubmit btn">送信</button>
                     </div>
                 </form>
             </div>

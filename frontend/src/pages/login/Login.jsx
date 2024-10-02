@@ -1,10 +1,10 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef } from "react";
 import "./Login.css";
-import Footer from '../../components/footer/Footer';
-import Topbar from '../../components/topbar/Topbar';
+import Footer from "../../components/footer/Footer";
+import Topbar from "../../components/topbar/Topbar";
 import { loginCall } from "../../actionCalls";
-import { AuthContext } from '../../state/AuthContext';
-import { Link } from 'react-router-dom';
+import { AuthContext } from "../../state/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Login() {
     const email = useRef();
@@ -28,20 +28,20 @@ export default function Login() {
         <>
             <Topbar />
             <div className="loginContainer">
-                <form className='loginWrapper'
+                <form className="loginWrapper"
                      onSubmit={(e) => handleSubmit(e)} >
                     <h1>ログイン</h1>
                     <h2>メールアドレス</h2>
                     <input
                         className="loginUserInfo"
-                        type='email'
+                        type="email"
                         required
                         ref={email}
                     />
                     <h2>パスワード</h2>
                     <input
                         className="loginUserInfo"
-                        type='password'
+                        type="password"
                         required
                         minLength="6"
                         ref={password}
@@ -49,7 +49,7 @@ export default function Login() {
 
 
                 <div className="loginBtns">
-                    <button className='loginSubmit btn'>ログイン</button>
+                    <button className="loginSubmit btn">ログイン</button>
                     <Link to ="/pwForgot" >
                     <button className="passwordForget btn">
                         パスワードを忘れてしまった方はこちら

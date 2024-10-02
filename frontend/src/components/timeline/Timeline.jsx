@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import "./Timeline.css";
 import Post from "../post/Post";
 import axios from "axios";

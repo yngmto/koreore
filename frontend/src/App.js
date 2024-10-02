@@ -16,8 +16,8 @@ import { useContext } from "react";
 import { AuthContext } from "./state/AuthContext";
 import NewPost from "./pages/newPost/NewPost";
 import Edit from "./pages/edit/Edit";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 

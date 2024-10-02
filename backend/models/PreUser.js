@@ -15,7 +15,7 @@ const PreUserSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: '24h' // 24時間後に自動削除
+        expires: "24h" // 24時間後に自動削除
     }
 },
 {timestamps: true} //作成日時と更新日時を保存

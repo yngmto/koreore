@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react"
 import "./Post.css";
-import axios from 'axios';
+import axios from "axios";
 import { format } from "timeago.js";
-import * as timeago from 'timeago.js';
-import ja from 'timeago.js/lib/lang/ja';
-import { AuthContext } from '../../state/AuthContext';
-import { toast } from 'react-toastify';
-timeago.register('ja', ja);
+import * as timeago from "timeago.js";
+import ja from "timeago.js/lib/lang/ja";
+import { AuthContext } from "../../state/AuthContext";
+import { toast } from "react-toastify";
+timeago.register("ja", ja);
 
 
 export default function Post({ post }) {
@@ -287,7 +287,7 @@ export default function Post({ post }) {
 
           <div className="timelinePost">
             <div className="postTop">
-              <div className="postTime">{format(post.createdAt, 'ja')}</div>
+              <div className="postTime">{format(post.createdAt, "ja")}</div>
               <div className="userInfo">
                 <span>{age}歳 </span>
                 <span>{user.gender !== "未回答" ? user.gender : null}</span>

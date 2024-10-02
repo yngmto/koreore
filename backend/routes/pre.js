@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const PreUser = require("../models/PreUser");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
