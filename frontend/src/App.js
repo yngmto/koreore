@@ -20,7 +20,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-
+//メインコンポーネント
 function App() {
   const { user } = useContext(AuthContext);
   return (

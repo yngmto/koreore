@@ -5,7 +5,6 @@ import { format } from "timeago.js";
 import * as timeago from "timeago.js";
 import ja from "timeago.js/lib/lang/ja";
 import { AuthContext } from "../../state/AuthContext";
-import { toast } from "react-toastify";
 timeago.register("ja", ja);
 
 
@@ -34,6 +33,7 @@ export default function Post({ post }) {
     if (!currentUser) return false;
     return post.warui.includes(currentUser?._id)
   });
+
   //「わるくない」ボタン
   const [warukunai, setWarukunai] = useState(post.warukunai ? post.warukunai.length : 0);
   const [isWarukunai, setIsWarukunai] = useState(() => {

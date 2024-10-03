@@ -1,3 +1,5 @@
+//フレームワークをインポート
+//Routerオブジェクトを作成
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
@@ -6,11 +8,11 @@ const bcrypt = require("bcrypt");
 router.post("/register", async (req, res) => {
   console.log("registerAPIに到達しました");
   try {
-    //PWのハッシュ化
+    //ソルト（鍵）を生成（複雑度10）
     const salt = await bcrypt.genSalt(10);
+    //ソルトを用いてハッシュ化
     const hashedPw = await bcrypt.hash(req.body.password, salt);
     req.body.password = hashedPw;
-    console.log(req.body);
 
     //Userの保存
     const newUser = await new User({
@@ -19,7 +21,8 @@ router.post("/register", async (req, res) => {
       gender: req.body.gender,
       birthday: req.body.birthday,
     });
-    const user = await newUser.save();
+    await newUser.save();
+
     return res.status(200).json(newUser);//200←すべてうまくいってるよ
 
   } catch (err) {
@@ -39,7 +42,6 @@ router.post("/login", async (req, res) => {
 
     //パスワードを比較
     const vailedPassword = await bcrypt.compare(req.body.password, user.password);
-    console.log("valid", vailedPassword);
 
     //false
     if (!vailedPassword) return res.status(400).json("パスワードが違います");
@@ -50,9 +52,5 @@ router.post("/login", async (req, res) => {
     return res.status(500).json(err); //500←サーバー関連のエラー
   }
 })
-
-// router.get("/", (req, res) => {
-//     res.send("auth routereeeeeeeeeee");
-//   });
 
 module.exports = router;
