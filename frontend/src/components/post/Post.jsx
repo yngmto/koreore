@@ -27,7 +27,7 @@ export default function Post({ post }) {
   }
 
   //user情報を取得してキャッシュ化
-  const { data: userData, isLoading, error} = useQuery(
+  const { data: userData, isLoading, error } = useQuery(
     ["userData", post.userId], //クエリのユニークキー
     () => fetchUser(post.userId), //userを取得し、userDataに格納
     { //5分間は再フェッチを行わない
@@ -211,7 +211,7 @@ export default function Post({ post }) {
   //userの年齢計算
   // let birthday;
   // if(!isLoading ) birthday = userData.birthday;
-  let age = "…";
+  let age;
   if (!isLoading && user && userData.birthday) {
     const today = new Date();
     const birthDate = new Date(userData.birthday)
@@ -223,7 +223,7 @@ export default function Post({ post }) {
   }
 
   let gender;
-  if(!isLoading) gender = userData.gender;
+  if (!isLoading) gender = userData.gender;
 
   //削除モーダル
   const [modal, setModal] = useState(false);
@@ -309,8 +309,11 @@ export default function Post({ post }) {
             <div className="postTop">
               <div className="postTime">{format(post.createdAt, "ja")}</div>
               <div className="userInfo">
-                <span>{age}歳 </span>
-                <span>{gender !== "未回答" ? gender : null}</span>
+                {/* isLiading記述 */}
+                {isLoading
+                  ? <span>読み込み中…</span>
+                  : <><span>{age}歳 </span>
+                    <span>{gender !== "未回答" ? gender : null}</span></>}
               </div>
 
               {currentUser?._id === post.userId
