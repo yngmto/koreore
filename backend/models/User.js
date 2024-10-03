@@ -26,8 +26,13 @@ const UserSchema = new mongoose.Schema({
         default: false,
     },
 },
-    { timestamps: true } //作成日時と更新日時を保存
+
+//作成日時と更新日時を保存
+{ timestamps: true }
 );
+
+//emailにインデックスを追加
+UserSchema.index({ email: 1 });
 
 
 module.exports = mongoose.model("User", UserSchema);

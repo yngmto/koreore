@@ -83,10 +83,23 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-//ユーザー情報の取得
+//ユーザー情報の取得(プロフィール用)
 router.get("/:id", async (req, res) => { //「:id」には任意のidが入る
   try {
     const user = await User.findById(req.params.id);
+
+    //分割代入して、必要な情報とそうでない情報を分ける
+    const { password, updatedAt, ...other } = user._doc;
+    return res.status(200).json(other);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+//ユーザー情報の取得(ポスト用)
+router.get("/post/:id", async (req, res) => { //「:id」には任意のidが入る
+  try {
+    const user = await User.findById(req.params.id).select("birthday gender");
 
     //分割代入して、必要な情報とそうでない情報を分ける
     const { password, updatedAt, ...other } = user._doc;
