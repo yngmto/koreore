@@ -1,11 +1,11 @@
 import "./PreRegisted.css";
-import Topbar from '../../components/topbar/Topbar';
-import Footer from '../../components/footer/Footer';
+import Topbar from "../../components/topbar/Topbar";
+import Footer from "../../components/footer/Footer";
 
 export default function PreRegisted() {
     return (<>
         <Topbar />
-        <div className='preRegisterContainer'>
+        <div className="preRegisterContainer">
                 <h1>仮登録完了</h1>
                 <div className="preRegistedMessage">
                     認証用のメールを送信しました。

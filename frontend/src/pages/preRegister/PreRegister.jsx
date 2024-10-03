@@ -1,9 +1,9 @@
-import React, { useRef, } from 'react';
+import React, { useRef, } from "react";
 import "./PreRegister.css";
-import Topbar from '../../components/topbar/Topbar';
-import Footer from '../../components/footer/Footer';
+import Topbar from "../../components/topbar/Topbar";
+import Footer from "../../components/footer/Footer";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function PreRegister() {
     const API_URL = process.env.REACT_APP_API_URL;
@@ -41,17 +41,17 @@ export default function PreRegister() {
 
     return (<>
         <Topbar />
-        <div className='preRegisterContainer'>
+        <div className="preRegisterContainer">
 
             <form className="preRegisterWrapper"
                 onSubmit={(e) => handleSubmit(e)}>
                 <h1>仮登録</h1>
                 <div className="preEmailWrapper">
-                    <h2 className='preH2'>メールアドレス</h2>
+                    <h2 className="preH2">メールアドレス</h2>
                     <div className="preEmail">
                         <input
                             className="preRegsterUserInfo"
-                            type='email'
+                            type="email"
                             required
                             ref={email}
                         />
@@ -62,7 +62,7 @@ export default function PreRegister() {
                     24時間以内に、メール記載のURLから本登録にお進みください。
                 </div>
                 <div className="registerBtns">
-                    <button className='registerSubmit btn' type="submit">送信</button>
+                    <button className="registerSubmit btn" type="submit">送信</button>
                 </div>
             </form>
         </div>

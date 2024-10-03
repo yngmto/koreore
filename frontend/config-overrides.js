@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 module.exports = function override(config) {
     const fallback = config.resolve.fallback || {};
@@ -21,13 +21,13 @@ module.exports = function override(config) {
     config.resolve.fallback = fallback;
     config.plugins = (config.plugins || []).concat([
         new webpack.ProvidePlugin({
-            process: 'process/browser',
-            Buffer: ['buffer', 'Buffer']
+            process: "process/browser",
+            Buffer: ["buffer", "Buffer"]
         })
     ]);
     config.resolve.alias = {
         ...config.resolve.alias,
-        'process/browser': 'process/browser.js'
+        "process/browser": "process/browser.js"
     };
 
     config.resolve.extensions = [...config.resolve.extensions, ".ts", ".js"]

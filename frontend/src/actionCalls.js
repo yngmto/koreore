@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 //ログインに関すること
 export const loginCall = async (user, dispatch) => {
@@ -11,7 +11,7 @@ export const loginCall = async (user, dispatch) => {
         //LOGIN_STARTが成功したら、ログインのAPIを叩く
         const response = await axios.post(`${API_URL}/auth/login`, user);
         //成功した通知を出す
-        toast.success('ログイン成功', {
+        toast.success("ログイン成功", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -20,8 +20,8 @@ export const loginCall = async (user, dispatch) => {
             draggable: true,
             progress: undefined,
             style: {
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                border: '1px solid #00B8A9',
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                border: "1px solid #00B8A9",
             }
         });
         dispatch({
@@ -29,7 +29,7 @@ export const loginCall = async (user, dispatch) => {
         });
     } catch (err) {
         //通知を表示
-        toast.error('メールアドレスかパスワードが違います', {
+        toast.error("メールアドレスかパスワードが違います", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -54,7 +54,7 @@ export const updateCall = async (user, dispatch) => {
         const response = await axios.put(`${API_URL}/users/${user.userId}`, user);
         // console.log(response.data);
 
-        toast.success('プロフィール更新完了', {
+        toast.success("プロフィール更新完了", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -63,8 +63,8 @@ export const updateCall = async (user, dispatch) => {
             draggable: true,
             progress: undefined,
             style: {
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                border: '1px solid #00B8A9',
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                border: "1px solid #00B8A9",
             }
         });
         dispatch({ type: "UPDATE_USER", payload: response.data });
@@ -78,7 +78,7 @@ export const logoutCall = async (user, dispatch) => {
     // console.log("logoutCallに到達しました");
 
     try {
-        toast.success('ログアウト完了', {
+        toast.success("ログアウト完了", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -87,8 +87,8 @@ export const logoutCall = async (user, dispatch) => {
             draggable: true,
             progress: undefined,
             style: {
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                border: '1px solid #00B8A9',
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                border: "1px solid #00B8A9",
             }
         });
         dispatch({ type: "LOGOUT_USER", payload: user });

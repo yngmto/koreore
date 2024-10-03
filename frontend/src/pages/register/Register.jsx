@@ -1,12 +1,12 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from "react";
 import "./Register.css";
-import Topbar from '../../components/topbar/Topbar';
-import Footer from '../../components/footer/Footer';
+import Topbar from "../../components/topbar/Topbar";
+import Footer from "../../components/footer/Footer";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import { loginCall } from '../../actionCalls';
-import { AuthContext } from '../../state/AuthContext';
-import { isValid, parse } from 'date-fns';
+import { useNavigate } from "react-router-dom";
+import { loginCall } from "../../actionCalls";
+import { AuthContext } from "../../state/AuthContext";
+import { isValid, parse } from "date-fns";
 
 
 export default function Register() {
@@ -41,15 +41,15 @@ export default function Register() {
         const dayNum = parseInt(day, 10);
 
         // 日付の妥当性をチェック
-        const date = parse(`${yearNum}-${monthNum + 1}-${dayNum}`, 'yyyy-M-d', new Date());
+        const date = parse(`${yearNum}-${monthNum + 1}-${dayNum}`, "yyyy-M-d", new Date());
 
         if (!isValid(date)) {
-            return '無効な日付です';
+            return "無効な日付です";
         }
 
         const currentYear = new Date().getFullYear();
         if (currentYear - yearNum > 130) {
-            return '130歳以上の年齢は無効です';
+            return "130歳以上の年齢は無効です";
         }
         return null; // エラーがない場合はnullを返す
     };
@@ -117,7 +117,7 @@ export default function Register() {
 
     return (<>
         <Topbar />
-        <div className='registerContainer'>
+        <div className="registerContainer">
 
             <form className="registerWrapper"
                 onSubmit={(e) => handleSubmit(e)}>
@@ -125,7 +125,7 @@ export default function Register() {
                 <h2>メールアドレス</h2>
                 <input
                     className="regsterUserInfo registerEmail"
-                    type='email'
+                    type="email"
                     required
                     ref={email}
                     value={decodeUser.email}
@@ -161,17 +161,17 @@ export default function Register() {
                 </div>
                 <h2>生年月日</h2>
                 <div className="regsterUserInfo registerBirthday">
-                    <input className='registerYear' required ref={year} />
+                    <input className="registerYear" required ref={year} />
                     <span>年</span>
-                    <input className='registerMonth' required ref={month} />
+                    <input className="registerMonth" required ref={month} />
                     <span>月</span>
-                    <input className='registerDay' required ref={day} />
+                    <input className="registerDay" required ref={day} />
                     <span>日</span>
                 </div>
                 <h2>新規パスワード</h2>
                 <input
                     className="regsterUserInfo"
-                    type='password'
+                    type="password"
                     required
                     minLength="6"
                     ref={password}
@@ -179,13 +179,13 @@ export default function Register() {
                 <h2>新規パスワード(確認)</h2>
                 <input
                     className="regsterUserInfo"
-                    type='password'
+                    type="password"
                     required
                     minLength="6"
                     ref={passwordConfirmation}
                 />
                 <div className="registerBtns">
-                    <button className='registerSubmit btn' type="submit">登録</button>
+                    <button className="registerSubmit btn" type="submit">登録</button>
                 </div>
             </form>
 

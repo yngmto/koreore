@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import "./Timeline.css";
 import Post from "../post/Post";
 import axios from "axios";
@@ -16,23 +16,31 @@ export default function Timeline({ userId }) {
   const fetchPosts = useCallback(async () => {
     const API_URL = process.env.REACT_APP_API_URL;
     try {
+      //useridが渡されているなら自分の投稿を
+      //そうでなければすべての投稿を取得
       const endpoint = userId
         ? `${API_URL}/posts/myposts/${userId}`
         : `${API_URL}/posts/timeline/all`;
-        //useridが渡されているなら自分の投稿を
-        //そうでなければすべての投稿を取得
+
 
       const response = await axios.get(endpoint, {
+        //axiosは、これで自動的にクエリを構築する
         params: { lastTime: lastTime }
       });
 
+      //取得した投稿をスプレッド構文で結合
       const newPosts = response.data;
       setPosts(prevPosts => [...prevPosts, ...newPosts]);
 
+      //newPostsが空か、10件以下なら…
       if (!newPosts || newPosts.length < 10) {
         setHasMore(false);
       } else {
-        setLastTime(new Date(newPosts[newPosts.length - 1].createdAt).toISOString());
+        //取得した中でいちばん後ろの投稿の作成日時をセット
+        setLastTime(
+          new Date(newPosts[newPosts.length - 1].createdAt)
+            .toISOString() //文字列化（時間を世界共通の形式で記録）
+        );
       }
     } catch (error) {
       console.error("投稿の取得中にエラーが発生しました:", error);
@@ -41,27 +49,33 @@ export default function Timeline({ userId }) {
   }, [userId, lastTime]);
 
   //hasMoreの監視
-  useEffect(() => {
-    if (!hasMore) {
-      //console.log("もうないです", hasMore);
-    }
-  }, [hasMore]);
+  // useEffect(() => {
+  //   if (!hasMore) {
+  //     //console.log("もうないです", hasMore);
+  //   }
+  // }, [hasMore]);
 
   //---交差オブザーバー---
   useEffect(() => {
+    //オブザーバーを作成
     const observer = new IntersectionObserver(
+
+      //entries ← 監視対象の状態を表す配列
       entries => {
+        //監視対象が画面に表示されている && hasMore
         if (entries[0].isIntersecting && hasMore) {
           fetchPosts();
         }
       },
-      { threshold: 1 }
+      { threshold: 1 } //監視対象が100%表示されたら…
     );
 
-    if (observerTarget.current) {
-      observer.observe(observerTarget.current);
+    //監視対象の設定
+    if (observerTarget.current) { //存在するなら…
+      observer.observe(observerTarget.current); //監視対象に設定
     }
 
+    //クリーンアップ(observer量産によるパフォーマンス低下防止)
     return () => observer.disconnect();
   }, [fetchPosts, hasMore]);
 

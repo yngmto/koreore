@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const PreUser = require("../models/PreUser");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
@@ -12,7 +12,8 @@ router.post("/preRegister", async (req, res) => {
         const registeredUser = await User.findOne({ email: req.body.email });
         const preRegisteredUser = await PreUser.findOne({ email: req.body.email });
         // console.log("registeredUser:",registeredUser);
-        const frontendUrl = "https://koreore.vercel.app";
+        const frontendUrl = process.env.FRONTEND_URL;
+        console.log("frontendUrl",frontendUrl);
         if (registeredUser) {
             console.log("このユーザーは既に存在します");
             //リダイレクト準備
@@ -52,7 +53,7 @@ router.post("/pwForgot", async (req, res) => {
         if (!registeredUser) {
             console.log("このメールアドレスは登録されていません");
             //リダイレクト準備
-            const frontendUrl = "https://koreore.vercel.app";
+            const frontendUrl = process.env.FRONTEND_URL;;
             return res.json({
                 success: false
                 //リダイレクトさせる
@@ -60,7 +61,7 @@ router.post("/pwForgot", async (req, res) => {
         } else if (preRegisteredUser) {
             console.log("このユーザーには既にメールをお送りしています");
             //リダイレクト準備
-            const frontendUrl = "https://koreore.vercel.app";
+            const frontendUrl = process.env.FRONTEND_URL;;
             return res.json({
                 success: false
                 //リダイレクトさせる
@@ -183,7 +184,7 @@ router.get("/pwUpdate/:code", async (req, res) => {
             //userを安全な形式に変換
             const encodeUser = Buffer.from(JSON.stringify(user)).toString("base64");
             //リダイレクト準備
-            const frontendUrl ="https://koreore.vercel.app";
+            const frontendUrl =process.env.FRONTEND_URL;;
             // console.log("encodeUser:",encodeUser);
             return res.redirect(`${frontendUrl}/pwUpdate/?user=${encodeUser}`);
         } else {

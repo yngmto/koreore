@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from "react";
 import "./Edit.css";
-import Topbar from '../../components/topbar/Topbar';
-import Footer from '../../components/footer/Footer';
-import { AuthContext } from '../../state/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
-import { updateCall } from '../../actionCalls';
-import { isValid, parse } from 'date-fns';
+import Topbar from "../../components/topbar/Topbar";
+import Footer from "../../components/footer/Footer";
+import { AuthContext } from "../../state/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import { updateCall } from "../../actionCalls";
+import { isValid, parse } from "date-fns";
 
 export default function Edit() {
     //グローバルコンテキストを使用
@@ -28,19 +28,19 @@ export default function Edit() {
         const dayNum = parseInt(day, 10);
 
         // 日付の妥当性をチェック
-        const date = parse(`${yearNum}-${monthNum + 1}-${dayNum}`, 'yyyy-M-d', new Date());
+        const date = parse(`${yearNum}-${monthNum + 1}-${dayNum}`, "yyyy-M-d", new Date());
 
         if (!isValid(date)) {
-            return '無効な日付です';
+            return "無効な日付です";
         }
 
         const currentYear = new Date().getFullYear();
         if (currentYear - yearNum > 130) {
-            return '130歳以上の年齢は無効です';
+            return "130歳以上の年齢は無効です";
         }
 
         if (currentYear - yearNum < 18) {
-            return '18歳未満は登録できません';
+            return "18歳未満は登録できません";
         }
 
         return null; // エラーがない場合はnullを返す
@@ -105,11 +105,11 @@ export default function Edit() {
 
     return (
         <><Topbar />
-            <div className='editContainer'>
+            <div className="editContainer">
                 <form className="editWrapper" onSubmit={(e) => handleSubmit(e)}>
                     <h1>プロフィール編集</h1>
                     <h2>メールアドレス</h2>
-                    <input className="editUserInfo" type='email' defaultValue={user.email} ref={email}></input>
+                    <input className="editUserInfo" type="email" defaultValue={user.email} ref={email}></input>
                     <h2>性別</h2>
                     <div className="editUserInfo editGender">
                         <label>
@@ -143,22 +143,22 @@ export default function Edit() {
                     </div>
                     <h2>生年月日</h2>
                     <div className="editUserInfo editBirthday">
-                        <input className='editYear' required ref={year} defaultValue={date.getFullYear()} />
+                        <input className="editYear" required ref={year} defaultValue={date.getFullYear()} />
                         <span>年</span>
-                        <input className='editMonth' required ref={month} defaultValue={date.getMonth() + 1} />
+                        <input className="editMonth" required ref={month} defaultValue={date.getMonth() + 1} />
                         <span>月</span>
-                        <input className='editDay' required ref={day} defaultValue={date.getDate()} />
+                        <input className="editDay" required ref={day} defaultValue={date.getDate()} />
                         <span>日</span>
                     </div>
                     <h2>新規パスワード</h2>
-                    <input className="editUserInfo" type='password' ref={password}></input>
+                    <input className="editUserInfo" type="password" ref={password}></input>
                     <h2>新規パスワード確認</h2>
-                    <input className="editUserInfo" type='password' ref={passwordConfirmation}></input>
+                    <input className="editUserInfo" type="password" ref={passwordConfirmation}></input>
 
 
                     <div className="editBtnsWrapper">
-                        <Link to="/profile"><button className='editBack btn'>戻る</button></Link>
-                        <button className='editSubmit btn' type='submit'>確定</button>
+                        <Link to="/profile"><button className="editBack btn">戻る</button></Link>
+                        <button className="editSubmit btn" type="submit">確定</button>
 
                     </div>
                 </form>

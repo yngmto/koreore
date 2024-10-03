@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react"
 import "./Post.css";
-import axios from 'axios';
+import axios from "axios";
 import { format } from "timeago.js";
-import * as timeago from 'timeago.js';
-import ja from 'timeago.js/lib/lang/ja';
-import { AuthContext } from '../../state/AuthContext';
-timeago.register('ja', ja);
+import * as timeago from "timeago.js";
+import ja from "timeago.js/lib/lang/ja";
+import { AuthContext } from "../../state/AuthContext";
+timeago.register("ja", ja);
 
 
 export default function Post({ post }) {
@@ -33,6 +33,7 @@ export default function Post({ post }) {
     if (!currentUser) return false;
     return post.warui.includes(currentUser?._id)
   });
+
   //「わるくない」ボタン
   const [warukunai, setWarukunai] = useState(post.warukunai ? post.warukunai.length : 0);
   const [isWarukunai, setIsWarukunai] = useState(() => {
@@ -193,7 +194,7 @@ export default function Post({ post }) {
   }, [isWarui]);
 
   //userの年齢計算
-  let age = "読み込み中…";
+  let age = "…";
   if (user && user.birthday) {
     const today = new Date();
     const birthDate = new Date(user.birthday)
@@ -227,7 +228,8 @@ export default function Post({ post }) {
 
       // console.log("削除：",response);
 
-      //成功したら元のページにリダイレクト
+
+      //元のページにリダイレクト
       window.location.reload();
 
     } catch (err) {
@@ -285,7 +287,7 @@ export default function Post({ post }) {
 
           <div className="timelinePost">
             <div className="postTop">
-              <div className="postTime">{format(post.createdAt, 'ja')}</div>
+              <div className="postTime">{format(post.createdAt, "ja")}</div>
               <div className="userInfo">
                 <span>{age}歳 </span>
                 <span>{user.gender !== "未回答" ? user.gender : null}</span>

@@ -5,7 +5,7 @@ const authRoute = require("../routes/auth");
 const postsRoute = require("../routes/posts");
 const preRoute = require("../routes/pre");
 const mongoose = require("mongoose");
-const path = require('path');
+const path = require("path");
 const cors = require("cors");
 
 
@@ -21,13 +21,13 @@ mongoose
 //CORS
 app.use(cors({
   //このURLからのリクエストのみを許可
-  origin: ['https://koreore.vercel.app','http://localhost:3000'],
+  origin: ["https://koreore.vercel.app","http://localhost:3000"],
   //クッキーやHTTP認証などの認証情報を含むリクエストを許可
   credentials: true,
   //許可するメソッド
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   //クライアントが送信できるヘッダー
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 //---ミドルウェア---
@@ -47,17 +47,17 @@ app.use("/pre", preRoute);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('サーバーエラーが発生いたしました');
+  res.status(500).send("サーバーエラーが発生いたしました");
 });
 
 // クライアントのビルドフォルダを静的ファイルとして提供
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 //※Vercelでは、静的ファイルは
 //.vercel/output/static ディレクトリに配置する必要がある。
 // その他のルートはReactアプリにリダイレクト
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 // });
 
 //ローカル時
@@ -67,8 +67,8 @@ app.listen(PORT, () => {
 });
 
 //ルートパスのハンドラー
-app.get('/', (req, res) => {
-  res.send('Welcome to my backend!');
+app.get("/", (req, res) => {
+  res.send("Welcome to my backend!");
 });
 
 module.exports = app;
