@@ -5,27 +5,41 @@ import { format } from "timeago.js";
 import * as timeago from "timeago.js";
 import ja from "timeago.js/lib/lang/ja";
 import { AuthContext } from "../../state/AuthContext";
+import { useQuery } from "react-query";
 timeago.register("ja", ja);
 
 
 export default function Post({ post }) {
   const API_URL = process.env.REACT_APP_API_URL;
-
   //ログインユーザー
   const { user: currentUser } = useContext(AuthContext);
   //投稿ユーザー
   const [user, setUser] = useState({});
-  ///---投稿userを取得---
-  useEffect(() => {
-    // console.log("投稿ユーザーを取得します");
-    const fetchUser = async () => {
-      const postUser = await axios.get(`${API_URL}/users/post/${post.userId}`);
-      // console.log("投稿ユーザーを取得できてる？", postUser.data);
-      setUser(postUser.data);
 
+  ///---投稿userを取得---
+  //useEffectにする必要なくね？
+  // useEffect(() => {
+
+  //投稿user取得関数
+  const fetchUser = async (userId) => {
+    const response = await axios.get(`${API_URL}/users/post/${userId}`);
+    return response.data;
+  }
+
+  //user情報を取得してキャッシュ化
+  const { data: userData, isLoading, error} = useQuery(
+    ["userData", post.userId], //クエリのユニークキー
+    () => fetchUser(post.userId), //userを取得し、userDataに格納
+    { //5分間は再フェッチを行わない
+      staleTime: 5 * 60 * 1000,
+      //非アクティブなクエリデータを保存する時間 30分
+      //(経過後、ガベージコレクション対象)
+      cacheTime: 30 * 60 * 1000,
     }
-    fetchUser();
-  }, []);
+  );
+
+  fetchUser(post.userId);
+  // }, []);
 
   //「う～ん」ボタン
   const [warui, setWarui] = useState(post.warui ? post.warui.length : 0);
@@ -65,7 +79,7 @@ export default function Post({ post }) {
       }
 
       //う～んのAPIを叩く useIdとpostIdを渡す
-      const response = await axios.put(`${API_URL}/posts/${post?._id}/warui`, { userId: currentUser?._id });
+      await axios.put(`${API_URL}/posts/${post?._id}/warui`, { userId: currentUser?._id });
 
       // if (response.data.success) {
       setWarui(isWarui ? warui - 1 : warui + 1);
@@ -89,7 +103,7 @@ export default function Post({ post }) {
     }
 
     try {
-      const response = await axios.put(`${API_URL}/posts/${post?._id}/warukunai`, { userId: currentUser?._id });
+      await axios.put(`${API_URL}/posts/${post?._id}/warukunai`, { userId: currentUser?._id });
       // if (response.data.success) {
       setWarukunai(isWarukunai ? warukunai - 1 : warukunai + 1);
       setIsWarukunai(!isWarukunai);
@@ -193,17 +207,23 @@ export default function Post({ post }) {
     }
   }, [isWarui]);
 
+
   //userの年齢計算
+  // let birthday;
+  // if(!isLoading ) birthday = userData.birthday;
   let age = "…";
-  if (user && user.birthday) {
+  if (!isLoading && user && userData.birthday) {
     const today = new Date();
-    const birthDate = new Date(user.birthday)
+    const birthDate = new Date(userData.birthday)
     age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }
   }
+
+  let gender;
+  if(!isLoading) gender = userData.gender;
 
   //削除モーダル
   const [modal, setModal] = useState(false);
@@ -219,7 +239,7 @@ export default function Post({ post }) {
     e.preventDefault();
 
     try {
-      const response = await axios.delete(`${API_URL}/posts`, {
+      await axios.delete(`${API_URL}/posts`, {
         params: {
           id: post?._id,
           userId: currentUser?._id
@@ -290,7 +310,7 @@ export default function Post({ post }) {
               <div className="postTime">{format(post.createdAt, "ja")}</div>
               <div className="userInfo">
                 <span>{age}歳 </span>
-                <span>{user.gender !== "未回答" ? user.gender : null}</span>
+                <span>{gender !== "未回答" ? gender : null}</span>
               </div>
 
               {currentUser?._id === post.userId

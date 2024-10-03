@@ -18,32 +18,37 @@ import NewPost from "./pages/newPost/NewPost";
 import Edit from "./pages/edit/Edit";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 
 //メインコンポーネント
 function App() {
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext); //閲覧ユーザー
+  const queryClient = new QueryClient(); //クエリ
+
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pwForgot" element={user ? <Navigate to="/" /> : <PwForgot />} />
-          <Route path="/pwUpdateLinkSend" element={user ? <Navigate to="/" /> : <PwUpdateLinkSend />} />
-          <Route path="/pwUpdate" element={user ? <Navigate to="/" /> : <PwUpdate />} />
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-          <Route path="/preRegister" element={user ? <Navigate to="/" /> : <PreRegister />} />
-          <Route path="/preUserExist" element={user ? <Navigate to="/" /> : <PreUserExist />} />
-          <Route path="/preRegisted" element={user ? <Navigate to="/" /> : <PreRegisted />} />
-          <Route path="/registered" element={user ? <Navigate to="/" /> : <Registered/>} />
-          <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
-          <Route path="/profile" element={user ? <Profile /> : <Navigate to="/" />} />
-          <Route path="/myposts" element={user ? <Myposts /> : <Navigate to="/" />} />
-          <Route path="/post" element={<Post />} />
-          <Route path="/newPost" element={<NewPost />} />
-          <Route path="/edit" element={user ? <Edit /> : <Navigate to="/" /> } />
-        </Routes>
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pwForgot" element={user ? <Navigate to="/" /> : <PwForgot />} />
+            <Route path="/pwUpdateLinkSend" element={user ? <Navigate to="/" /> : <PwUpdateLinkSend />} />
+            <Route path="/pwUpdate" element={user ? <Navigate to="/" /> : <PwUpdate />} />
+            <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+            <Route path="/preRegister" element={user ? <Navigate to="/" /> : <PreRegister />} />
+            <Route path="/preUserExist" element={user ? <Navigate to="/" /> : <PreUserExist />} />
+            <Route path="/preRegisted" element={user ? <Navigate to="/" /> : <PreRegisted />} />
+            <Route path="/registered" element={user ? <Navigate to="/" /> : <Registered />} />
+            <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+            <Route path="/profile" element={user ? <Profile /> : <Navigate to="/" />} />
+            <Route path="/myposts" element={user ? <Myposts /> : <Navigate to="/" />} />
+            <Route path="/post" element={<Post />} />
+            <Route path="/newPost" element={<NewPost />} />
+            <Route path="/edit" element={user ? <Edit /> : <Navigate to="/" />} />
+          </Routes>
+        </Router>
+      </QueryClientProvider>
       <ToastContainer position="top-right" autoClose={5000} />
     </>
   );
