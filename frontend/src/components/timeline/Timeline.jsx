@@ -10,8 +10,6 @@ export default function Timeline({ userId }) {
   const [message, setMessage] = useState("もっと読み込む");
   const observerTarget = useRef(null);
 
-  // console.log("TLのuserId:",userId);
-
   //---TL読込---
   const fetchPosts = useCallback(async () => {
     const API_URL = process.env.REACT_APP_API_URL;
@@ -47,13 +45,6 @@ export default function Timeline({ userId }) {
       setHasMore(false);
     }
   }, [userId, lastTime]);
-
-  //hasMoreの監視
-  // useEffect(() => {
-  //   if (!hasMore) {
-  //     //console.log("もうないです", hasMore);
-  //   }
-  // }, [hasMore]);
 
   //---交差オブザーバー---
   useEffect(() => {
