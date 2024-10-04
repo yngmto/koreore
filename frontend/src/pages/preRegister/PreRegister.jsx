@@ -4,6 +4,7 @@ import Topbar from "../../components/topbar/Topbar";
 import Footer from "../../components/footer/Footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { errorToast } from "../../utils/globalFunctions";
 
 export default function PreRegister() {
     const API_URL = process.env.REACT_APP_API_URL;
@@ -24,10 +25,11 @@ export default function PreRegister() {
             //preRegisterAPIを叩く
             const response = await axios.post(`${API_URL}/pre/preRegister`, user);
             // console.log("preRegisterのresponse", response);
-            // もし既に登録済ならリダイレクト
-            if (response.data.success) {
-                // console.log("既に登録済みのようです");
-                window.location.href = response.data.redirectTo;
+            // もし既に登録済ならtoast
+            if (response.data.message === "本登録済") {
+                errorToast("このメールアドレスは既に本登録されています");
+            } else if(response.data.message === "仮登録済"){
+                errorToast("このメールアドレスは既に仮登録されています");
             } else {
                 //成功したらリダイレクト
                 navigate("/preRegisted");

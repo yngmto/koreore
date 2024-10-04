@@ -4,7 +4,7 @@
 }
 
 .footer-menu {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -13,8 +13,6 @@
     /* width: 100%; */
     color: white;
     box-shadow: 0px 4px 10px -3px #000000;
-
-
 }
 
 .footer-menu ul {
@@ -23,11 +21,12 @@
     padding: 0;
     display: flex;
     justify-content: center;
+    width: 100%;
 
 }
 
 .footer-menu li {
-    flex: 1;
+    flex: 0 1 auto;
     margin:10px 0px;
 
 }
@@ -43,10 +42,10 @@
 
 /* +処理 */
 .plus{
-    background: #00B8A9;
+    background: var(--koreoreGreen);
     border-radius: 50px;
     /* display: inline-block; */
-    min-width: 150px;
+    min-width: 140px;
     text-align: center;
 }
 .plus i {
@@ -60,7 +59,6 @@
     margin-left:20px;
 }
 
-/* ----改善の必要あり---- */
 .footer-menu li:hover {
     filter: brightness(110%);
 }

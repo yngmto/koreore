@@ -7,7 +7,7 @@
 
 
 .loginUserInfo{
-    border: 1px solid #00B8A9;
+    border: 1px solid var(--koreoreGreen);
     padding: 5px;
     width:95%;
     margin-bottom:16px;
@@ -20,7 +20,7 @@
 }
 
 .loginSubmit {
-	background-color:#00B8A9;
+	background-color:var(--koreoreGreen);
     margin-top: 16px;
 }
 .loginSubmit:hover {

@@ -12,7 +12,7 @@ export default function Myposts() {
   return (
     <>
         <Topbar/>
-        <h1 className="mypostsH1">ポスト一覧</h1>
+        <h1 className="mypostsH1">マイポスト</h1>
         <Timeline userId={userId}/>
         <Footer/>
     </>

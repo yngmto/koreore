@@ -100,7 +100,7 @@
 }
 
 .shareContainer{
-    background-color: #00B8A9;
+    background-color: var(--koreoreGreen);
     display: flex;
     justify-content: right;
 }

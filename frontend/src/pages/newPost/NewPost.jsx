@@ -5,7 +5,7 @@ import Footer from "../../components/footer/Footer";
 import { AuthContext } from "../../state/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { errorToast, successToast } from "../../utils/globalFunctions";
 
 
 export default function NewPost() {
@@ -37,19 +37,7 @@ export default function NewPost() {
     e.preventDefault();
 
     if (desc.current.value.length <= 10) {
-      toast.error("10文字以上入力してください", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        style: {
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          border: "1px solid #F6416C",
-        }
-      })
+      errorToast("10文字以上入力してください")
       return;
     };
 
@@ -60,19 +48,7 @@ export default function NewPost() {
 
     try {
       await axios.post(`${API_URL}/posts`, newPost);
-      toast.success("投稿完了", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        style: {
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          border: "1px solid #00B8A9",
-        }
-      });
+      successToast("投稿完了");
       navigate("/");
 
     } catch (err) {

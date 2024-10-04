@@ -13,13 +13,8 @@ export default function Post({ post }) {
   const API_URL = process.env.REACT_APP_API_URL;
   //ログインユーザー
   const { user: currentUser } = useContext(AuthContext);
-  //投稿ユーザー
-  const [user, setUser] = useState({});
 
   ///---投稿userを取得---
-  //useEffectにする必要なくね？
-  // useEffect(() => {
-
   //投稿user取得関数
   const fetchUser = async (userId) => {
     const response = await axios.get(`${API_URL}/users/post/${userId}`);
@@ -39,7 +34,7 @@ export default function Post({ post }) {
   );
 
   fetchUser(post.userId);
-  // }, []);
+
 
   //「う～ん」ボタン
   const [warui, setWarui] = useState(post.warui ? post.warui.length : 0);
@@ -207,12 +202,8 @@ export default function Post({ post }) {
     }
   }, [isWarui]);
 
-
-  //userの年齢計算
-  // let birthday;
-  // if(!isLoading ) birthday = userData.birthday;
   let age;
-  if (!isLoading && user && userData.birthday) {
+  if (!isLoading && userData.birthday) {
     const today = new Date();
     const birthDate = new Date(userData.birthday)
     age = today.getFullYear() - birthDate.getFullYear();
@@ -246,8 +237,6 @@ export default function Post({ post }) {
         }
       });
 
-      // console.log("削除：",response);
-
 
       //元のページにリダイレクト
       window.location.reload();
@@ -258,9 +247,6 @@ export default function Post({ post }) {
 
 
   }
-
-
-
 
   return (
     <>

@@ -1,9 +1,7 @@
 import Profile from "./pages/profile/Profile";
 import Myposts from "./pages/myposts/Myposts";
 import PreRegister from "./pages/preRegister/PreRegister";
-import PreUserExist from "./pages/preUserExist/PreUserExist";
 import PreRegisted from "./pages/preRegisted/PreRegisted";
-import Registered from "./pages/registered/Registered";
 import Register from "./pages/register/Register";
 import PwForgot from "./pages/pwForgot/PwForgot";
 import PwUpdate from "./pages/pwUpdate/PwUpdate";
@@ -37,9 +35,7 @@ function App() {
             <Route path="/pwUpdate" element={user ? <Navigate to="/" /> : <PwUpdate />} />
             <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
             <Route path="/preRegister" element={user ? <Navigate to="/" /> : <PreRegister />} />
-            <Route path="/preUserExist" element={user ? <Navigate to="/" /> : <PreUserExist />} />
             <Route path="/preRegisted" element={user ? <Navigate to="/" /> : <PreRegisted />} />
-            <Route path="/registered" element={user ? <Navigate to="/" /> : <Registered />} />
             <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
             <Route path="/profile" element={user ? <Profile /> : <Navigate to="/" />} />
             <Route path="/myposts" element={user ? <Myposts /> : <Navigate to="/" />} />

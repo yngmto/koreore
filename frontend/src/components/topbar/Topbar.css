@@ -36,7 +36,7 @@
 }
 
 .registerBtn {
-	background-color:#F6416C;
+	background-color:var(--koreorePink);
     margin-right: 16px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .loginBtn {
-	background-color:#00B8A9;
+	background-color:var(--koreoreGreen);
 }
 
 .btn:active {

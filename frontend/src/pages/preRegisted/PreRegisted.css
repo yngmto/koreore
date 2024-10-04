@@ -48,7 +48,7 @@
     display: block;
     border:none;
     width:100px;
-	background-color:#00B8A9;
+	background-color:var(--koreoreGreen);
     margin-top: 16px;
 }
 
