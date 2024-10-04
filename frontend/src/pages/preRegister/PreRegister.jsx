@@ -29,7 +29,7 @@ export default function PreRegister() {
             if (response.data.message === "本登録済") {
                 errorToast("このメールアドレスは既に本登録されています");
             } else if(response.data.message === "仮登録済"){
-                errorToast("このメールアドレスは既に仮登録されています");
+                errorToast("既に仮登録されています。メールをご確認ください");
             } else {
                 //成功したらリダイレクト
                 navigate("/preRegisted");

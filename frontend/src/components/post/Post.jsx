@@ -265,7 +265,7 @@ export default function Post({ post }) {
             <div className="modal-content">
               投稿を削除しますか？
             </div>
-            <div className="modalBtns">
+            <div className="postModalBtns">
               <form onSubmit={(e) => modalHandle(e)}>
                 <button className="deleteCloseBtn btn">戻る</button></form>
               <form onSubmit={(e) => deleteHandleSubmit(e)}>
