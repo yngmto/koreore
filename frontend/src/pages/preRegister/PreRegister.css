@@ -16,7 +16,7 @@
 }
 
 .preRegsterUserInfo{
-    border: 1px solid #00B8A9;
+    border: 1px solid var(--koreoreGreen);
     padding: 5px;
     width: 200px;
     margin-bottom:16px;
@@ -47,7 +47,7 @@
     display: block;
     border:none;
     width:100px;
-	background-color:#00B8A9;
+	background-color:var(--koreoreGreen);
     margin-top: 16px;
 }
 

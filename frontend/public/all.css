@@ -3,6 +3,12 @@
     padding: 0px;
 }
 
+/* グローバルスコープで変数を定義 */
+:root {
+	--koreoreGreen: #00B8A9;
+	--koreorePink: #F6416C;
+  }
+
 body{
 	padding-top: 60px;
 	padding-bottom: 100px;
@@ -21,7 +27,6 @@ body{
 	padding:10px 16px;
 	text-decoration:none;
     transition: filter 0.2s ease;
-	background-color: #00B8A9;
+	background-color: var(--koreoreGreen);
 }
 
-/* 以下toast設定 */

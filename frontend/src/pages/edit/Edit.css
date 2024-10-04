@@ -40,7 +40,7 @@
 }
 .editBack{
     margin-top: 16px;
-    background-color: #F6416C;
+    background-color: var(--koreorePink);
 }
 
 .editSubmit:hover {

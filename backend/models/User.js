@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
 );
 
 //emailにインデックスを追加
-UserSchema.index({ email: 1 });
+UserSchema.index({ email: 1 }),
 
 
 module.exports = mongoose.model("User", UserSchema);

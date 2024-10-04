@@ -42,7 +42,7 @@
 }
 
 .profileEdit {
-	background-color: #00B8A9;
+	background-color: var(--koreoreGreen);
 	margin-top: 16px;
 	width: 100px;
 }
@@ -52,7 +52,7 @@
 }
 
 .profileLogout {
-	background-color: #F6416C;
+	background-color:var(--koreorePink);
 	margin-top: 24px;
 	width: 120px;
 }
@@ -128,7 +128,7 @@ button:active {
 }
 
 .deleteCloseBtn {
-	background-color: #F6416C;
+	background-color: var(--koreorePink);
 	margin-right: 16px;
 }
 

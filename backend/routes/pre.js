@@ -18,14 +18,12 @@ router.post("/preRegister", async (req, res) => {
             console.log("このユーザーは既に存在します");
             //リダイレクト準備
             return res.json({
-                success: true,
-                redirectTo: `${frontendUrl}/registered/`
+                message:"本登録済"
             });
         } else if (preRegisteredUser) {
             console.log("このユーザーは既に仮登録済みです")
             return res.json({
-                success: true,
-                redirectTo: `${frontendUrl}/preUserExist/`
+                message:"仮登録済"
             });
         }
 
@@ -124,7 +122,7 @@ async function sendPwUpdateEmail(to, code) {
         subject: "これおれがわるいんか？：パスワード更新",
         html: `
       <p>以下のリンクをクリックして、パスワード更新画面へお進みください。</p>
-      <a href="${API_URL}/pre/pwUpdate/${code}">パスワード更新</a>
+      <a href="${API_URL}pre/pwUpdate/${code}">パスワード更新</a>
     `
     }
     console.log(mailOptions);
@@ -154,7 +152,7 @@ router.get("/verify/:code", async (req, res) => {
             //userを安全な形式に変換
             const encodeUser = Buffer.from(JSON.stringify(user)).toString("base64");
             //リダイレクト準備
-            const frontendUrl ="https://koreore.vercel.app";
+            const frontendUrl = process.env.FRONTEND_URL;
             // console.log("encodeUser:",encodeUser);
             return res.redirect(`${frontendUrl}/register/?user=${encodeUser}`);
         } else {
