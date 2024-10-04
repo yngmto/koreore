@@ -22,7 +22,7 @@ export default function Post({ post }) {
   }
 
   //user情報を取得してキャッシュ化
-  const { data: userData, isLoading, error } = useQuery(
+  const { data: userData, isLoading} = useQuery(
     ["userData", post.userId], //クエリのユニークキー
     () => fetchUser(post.userId), //userを取得し、userDataに格納
     { //5分間は再フェッチを行わない
@@ -265,7 +265,7 @@ export default function Post({ post }) {
             <div className="modal-content">
               投稿を削除しますか？
             </div>
-            <div className="modalBtns">
+            <div className="postModalBtns">
               <form onSubmit={(e) => modalHandle(e)}>
                 <button className="deleteCloseBtn btn">戻る</button></form>
               <form onSubmit={(e) => deleteHandleSubmit(e)}>
