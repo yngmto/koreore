@@ -22,7 +22,7 @@ export default function Post({ post }) {
   }
 
   //user情報を取得してキャッシュ化
-  const { data: userData, isLoading, error } = useQuery(
+  const { data: userData, isLoading} = useQuery(
     ["userData", post.userId], //クエリのユニークキー
     () => fetchUser(post.userId), //userを取得し、userDataに格納
     { //5分間は再フェッチを行わない
