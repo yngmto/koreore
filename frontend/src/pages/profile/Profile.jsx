@@ -103,11 +103,11 @@ export default function Profile() {
             退会すると全ての投稿が削除され、二度と復元できません。<br></br>
             本当に退会しますか？
           </div>
-          <div className="modalBtns">
+          <div className="userDeleteModalBtns">
             <form onSubmit={(e) => modalHandle(e)}>
-              <button className="deleteCloseBtn btn">戻る</button></form>
+              <button className="userDeleteCloseBtn btn">戻る</button></form>
             <form onSubmit={(e) => deleteHandleSubmit(e)}>
-              <button className="deleteConfirmBtn btn">退会</button></form>
+              <button className="userDeleteConfirmBtn btn">退会</button></form>
           </div>
         </div>
 
