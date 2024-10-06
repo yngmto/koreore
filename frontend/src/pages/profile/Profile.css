@@ -118,16 +118,18 @@ button:active {
 	padding-bottom: 24px;
 }
 
-.modalBtns {
+.userDeleteModalBtns {
 	display: flex;
 	justify-content: center;
+	margin-right: 8px;
 }
 
-.modalBtns button {
+.userDeleteModalBtns button {
 	width: 100px;
+
 }
 
-.deleteCloseBtn {
+.userDeleteCloseBtn {
 	background-color: var(--koreorePink);
 	margin-right: 16px;
 }

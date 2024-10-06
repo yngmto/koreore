@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import "./Timeline.css";
 import Post from "../post/Post";
 import axios from "axios";
@@ -9,10 +9,10 @@ export default function Timeline({ userId }) {
   const [lastTime, setLastTime] = useState(null);
   const [message, setMessage] = useState("もっと読み込む");
   const observerTarget = useRef(null);
+  const API_URL = process.env.REACT_APP_API_URL;
 
-  //---TL読込---
+  //---TL読込---(useCallback ← 関数をメモ化)
   const fetchPosts = useCallback(async () => {
-    const API_URL = process.env.REACT_APP_API_URL;
     try {
       //useridが渡されているなら自分の投稿を
       //そうでなければすべての投稿を取得
@@ -44,7 +44,9 @@ export default function Timeline({ userId }) {
       console.error("投稿の取得中にエラーが発生しました:", error);
       setHasMore(false);
     }
-  }, [userId, lastTime]);
+  }, [userId, lastTime]); //依存配列が変更されたときに関数が再生成
+
+
 
   //---交差オブザーバー---
   useEffect(() => {

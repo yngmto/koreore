@@ -99,19 +99,25 @@
     filter: brightness(150%);
 }
 
-.shareContainer{
+/* .shareContainer{
     background-color: var(--koreoreGreen);
     display: flex;
     justify-content: right;
 }
 .xShare{
     margin-right: 20px;
-}
+} */
 
 .deleteCloseBtn{
     margin-left: 16px;
 }
 
 .postModalBtns{
+    display: flex;
+    justify-content: center;
     margin-right: 22px;
+}
+
+.postModalBtns button{
+    width: 90px;
 }
