@@ -45,16 +45,16 @@ router.put("/pwUpdate/:id", async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPw = await bcrypt.hash(req.body.password, salt);
     req.body.password = hashedPw;
-    console.log("req.body.password",req.body.password);
+    console.log("req.body.password", req.body.password);
 
     //更新
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body },
-      { new: true })
+    const updatedUser = await User.findOneAndUpdate(
+      { email: req.body.email }, //アドレスで検索
+      { $set: req.body }, //req.bodyで更新
+      { new: true }) //更新後の情報を返す
       .select("-password"); //パスワードを除外して返す
 
-      console.log("updatedUser",updatedUser);
+    console.log("updatedUser", updatedUser);
 
     return res.status(200).json(updatedUser);
 
@@ -67,7 +67,7 @@ router.put("/pwUpdate/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   console.log("deleteAPIに到達しました");
   console.log(req.body.userId);
-  console.log(req.params.id );
+  console.log(req.params.id);
   console.log(req.body.userId === req.params.id);
 
   if (req.body.userId === req.params.id || req.body.isAdmin) {
@@ -79,7 +79,7 @@ router.delete("/:id", async (req, res) => {
       return res.status(500).json(err);
     }
   } else {
-    return res.status(403).json({message:"あなたは自分のアカウントのときだけ情報を削除できます"});
+    return res.status(403).json({ message: "あなたは自分のアカウントのときだけ情報を削除できます" });
   }
 });
 

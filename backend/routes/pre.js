@@ -182,7 +182,7 @@ router.get("/pwUpdate/:code", async (req, res) => {
             //userを安全な形式に変換
             const encodeUser = Buffer.from(JSON.stringify(user)).toString("base64");
             //リダイレクト準備
-            const frontendUrl =process.env.FRONTEND_URL;;
+            const frontendUrl =process.env.FRONTEND_URL;
             // console.log("encodeUser:",encodeUser);
             return res.redirect(`${frontendUrl}/pwUpdate/?user=${encodeUser}`);
         } else {
